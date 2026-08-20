@@ -127,6 +127,26 @@
     color: var(--wood-text-faint);
   }
 
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    border: 1px solid rgba(242, 234, 217, 0.18);
+    background: rgba(242, 234, 217, 0.06);
+    color: var(--wood-text);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+  }
+  .theme-toggle:hover { background: rgba(242, 234, 217, 0.12); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
   .hero-body { max-width: 620px; }
 
   .eyebrow {
@@ -468,7 +488,10 @@
   <div class="wrap">
     <div class="hero-nav">
       <a class="wordmark" href="#top">GameSquire</a>
-      <span class="nav-pill">Coming soon</span>
+      <div class="nav-right">
+        <span class="nav-pill">Coming soon</span>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">🌙</button>
+      </div>
     </div>
 
     <div class="hero-body">
@@ -624,6 +647,47 @@
         toast.classList.add('show');
       });
   }
+
+  (function () {
+    var STORAGE_KEY = 'gamesquire-theme';
+    var root = document.documentElement;
+    var toggle = document.getElementById('theme-toggle');
+
+    function systemPrefersDark() {
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    function effectiveTheme() {
+      var stored = null;
+      try {
+        stored = localStorage.getItem(STORAGE_KEY);
+      } catch (e) {
+        /* localStorage unavailable (e.g. private browsing) — fall back to system */
+      }
+      if (stored === 'light' || stored === 'dark') return stored;
+      return systemPrefersDark() ? 'dark' : 'light';
+    }
+    function applyTheme(theme, persist) {
+      root.setAttribute('data-theme', theme);
+      if (persist) {
+        try {
+          localStorage.setItem(STORAGE_KEY, theme);
+        } catch (e) {
+          /* ignore */
+        }
+      }
+      if (toggle) {
+        toggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+    }
+
+    applyTheme(effectiveTheme(), false);
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        applyTheme(effectiveTheme() === 'dark' ? 'light' : 'dark', true);
+      });
+    }
+  })();
 </script>
 </body>
 </html>
