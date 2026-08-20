@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>GameSquire Waitlist</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="GameSquire is the board game shelf, play log, and friends list built for actually getting a game to the table. Join the waitlist." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231c140c'/%3E%3Crect x='28' y='28' width='44' height='44' rx='10' fill='none' stroke='%23c9962c' stroke-width='6'/%3E%3Ccircle cx='40' cy='40' r='5' fill='%23c9962c'/%3E%3Ccircle cx='60' cy='60' r='5' fill='%23c9962c'/%3E%3C/svg%3E" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Domine:wght@500;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+  :root {
+    --wood-header: #3a2a18;
+    --wood-deep: #1c140c;
+    --wood-frame: #241a10;
+    --wood-text: #f2ead9;
+    --wood-text-muted: #d8c4a2;
+    --wood-text-faint: #a3927c;
+
+    --gold: #c9962c;
+    --on-gold: #241a10;
+
+    --bg: #f2ead9;
+    --surface: #fffaf0;
+    --surface-selected: #ecdcb9;
+    --border: #ecdcb9;
+    --ink: #241a10;
+    --ink-secondary: rgba(36, 26, 16, 0.66);
+    --ink-tertiary: rgba(36, 26, 16, 0.5);
+
+    --spine-1: #a85a2c; --swatch-1: #e3a978;
+    --spine-2: #4a7a56; --swatch-2: #9bc0a3;
+    --spine-3: #3d5f9e; --swatch-3: #8fa8d4;
+    --spine-4: #b5901f; --swatch-4: #e0c064;
+
+    --shadow: 0 1px 2px rgba(28, 20, 12, 0.08), 0 10px 28px -12px rgba(28, 20, 12, 0.28);
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1c140c;
+      --surface: #2a2016;
+      --surface-selected: #3a2c1d;
+      --border: rgba(242, 234, 217, 0.14);
+      --ink: #f2ead9;
+      --ink-secondary: rgba(242, 234, 217, 0.7);
+      --ink-tertiary: rgba(242, 234, 217, 0.52);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 28px -12px rgba(0, 0, 0, 0.55);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #1c140c;
+    --surface: #2a2016;
+    --surface-selected: #3a2c1d;
+    --border: rgba(242, 234, 217, 0.14);
+    --ink: #f2ead9;
+    --ink-secondary: rgba(242, 234, 217, 0.7);
+    --ink-tertiary: rgba(242, 234, 217, 0.52);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 28px -12px rgba(0, 0, 0, 0.55);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  a { color: inherit; }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    background: var(--wood-deep);
+    background-image: radial-gradient(120% 140% at 50% -10%, rgba(201, 150, 44, 0.14), transparent 55%);
+    border-bottom: 1px solid var(--wood-frame);
+    padding: 20px 0 64px;
+  }
+
+  .hero-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0 56px;
+  }
+
+  .wordmark {
+    font-family: 'Domine', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--wood-text);
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+
+  .wordmark::before {
+    content: "";
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    background: var(--gold);
+    margin-right: 9px;
+    transform: translateY(-1px);
+  }
+
+  .nav-pill {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--wood-text-faint);
+  }
+
+  .hero-body { max-width: 620px; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 20px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.7;
+  }
+
+  h1.headline {
+    font-family: 'Domine', serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5.4vw, 3.35rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--wood-text);
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+
+  .headline em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .sub {
+    font-size: 1.08rem;
+    line-height: 1.6;
+    color: var(--wood-text-muted);
+    max-width: 46ch;
+    margin: 0 0 36px;
+  }
+
+  form.waitlist {
+    display: flex;
+    gap: 10px;
+    max-width: 440px;
+    flex-wrap: wrap;
+  }
+  .hp { position: absolute; left: -9999px; }
+
+  .email-input {
+    flex: 1 1 240px;
+    min-width: 0;
+    height: 52px;
+    padding: 0 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(242, 234, 217, 0.18);
+    background: rgba(242, 234, 217, 0.06);
+    color: var(--wood-text);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.98rem;
+  }
+  .email-input::placeholder { color: var(--wood-text-faint); }
+  .email-input:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .btn-gold {
+    flex: 0 0 auto;
+    height: 52px;
+    padding: 0 26px;
+    border-radius: 12px;
+    border: none;
+    background: var(--gold);
+    color: var(--on-gold);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.98rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+  .btn-gold:hover { filter: brightness(1.06); transform: translateY(-1px); }
+  .btn-gold:focus-visible { outline: 2px solid var(--wood-text); outline-offset: 2px; }
+
+  .form-note {
+    font-size: 0.78rem;
+    color: var(--wood-text-faint);
+    margin-top: 12px;
+  }
+
+  .shelf-strip {
+    display: flex;
+    gap: 10px;
+    margin-top: 56px;
+    height: 108px;
+    align-items: flex-end;
+  }
+  .spine {
+    flex: 1 1 0;
+    max-width: 64px;
+    border-radius: 8px 8px 3px 3px;
+    position: relative;
+    box-shadow: inset 0 -14px 20px -12px rgba(0,0,0,0.35);
+  }
+  .spine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255,255,255,0.16), transparent 40%);
+  }
+  .spine.h1 { height: 100%; background: var(--swatch-1); }
+  .spine.h2 { height: 78%; background: var(--swatch-3); }
+  .spine.h3 { height: 92%; background: var(--gold); }
+  .spine.h4 { height: 66%; background: var(--swatch-2); }
+  .spine.h5 { height: 86%; background: var(--swatch-4); }
+  .spine.h6 { height: 58%; background: #d68f8a; }
+  .spine.h7 { height: 96%; background: var(--swatch-3); opacity: 0.7; }
+
+  /* ---------- Content sections ---------- */
+
+  section { padding: 76px 0; }
+  section.tight { padding: 56px 0; }
+
+  .kicker {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 12px;
+  }
+
+  h2.section-title {
+    font-family: 'Domine', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+
+  .section-lede {
+    font-size: 1rem;
+    color: var(--ink-secondary);
+    max-width: 60ch;
+    margin: 0 0 44px;
+    line-height: 1.65;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 640px) {
+    .features { grid-template-columns: 1fr; }
+  }
+
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px 24px 24px;
+    box-shadow: var(--shadow);
+    position: relative;
+    padding-left: 30px;
+  }
+  .feature-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 22px;
+    bottom: 22px;
+    width: 5px;
+    border-radius: 3px;
+    background: var(--spine-color, var(--gold));
+  }
+  .feature-card:nth-child(1) { --spine-color: var(--spine-1); }
+  .feature-card:nth-child(2) { --spine-color: var(--spine-2); }
+  .feature-card:nth-child(3) { --spine-color: var(--gold); }
+  .feature-card:nth-child(4) { --spine-color: var(--spine-3); }
+
+  .feature-title {
+    font-family: 'Domine', serif;
+    font-weight: 700;
+    font-size: 1.12rem;
+    margin: 0 0 8px;
+  }
+  .feature-body {
+    font-size: 0.94rem;
+    color: var(--ink-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .why-panel {
+    background: var(--wood-deep);
+    border-radius: 22px;
+    padding: 48px clamp(24px, 5vw, 56px);
+    color: var(--wood-text);
+    position: relative;
+    overflow: hidden;
+  }
+  .why-panel::before {
+    content: "\201D";
+    position: absolute;
+    top: -0.3em;
+    left: clamp(16px, 4vw, 40px);
+    font-family: 'Domine', serif;
+    font-size: 8rem;
+    color: rgba(201, 150, 44, 0.16);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .why-panel p {
+    position: relative;
+    font-family: 'Domine', serif;
+    font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+    line-height: 1.5;
+    max-width: 52ch;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .why-panel .attribution {
+    margin-top: 22px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--wood-text-faint);
+    letter-spacing: 0.02em;
+  }
+
+  .pricing-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .price-pill {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 0.88rem;
+    color: var(--ink-secondary);
+  }
+  .price-pill strong {
+    font-family: 'Domine', serif;
+    color: var(--ink);
+    font-size: 1rem;
+  }
+  .price-pill.free { border-color: var(--gold); background: transparent; }
+  .price-pill.free strong { color: var(--gold); }
+
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-q {
+    font-family: 'Domine', serif;
+    font-weight: 700;
+    font-size: 1.02rem;
+    margin: 0;
+  }
+  .faq-a {
+    font-size: 0.94rem;
+    color: var(--ink-secondary);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .footer-cta {
+    background: var(--wood-header);
+    border-top: 1px solid var(--wood-frame);
+    padding: 64px 0 40px;
+    color: var(--wood-text);
+  }
+  .footer-cta h2 {
+    font-family: 'Domine', serif;
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .footer-cta .sub { color: var(--wood-text-muted); margin-bottom: 32px; }
+
+  .footer-meta {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(242, 234, 217, 0.12);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: var(--wood-text-faint);
+  }
+  .footer-meta a { text-decoration: underline; text-underline-offset: 2px; }
+
+  .toast {
+    display: none;
+    margin-top: 14px;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .toast.show { display: block; }
+</style>
+</head>
+<body>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-nav">
+      <a class="wordmark" href="#top">GameSquire</a>
+      <span class="nav-pill">Coming soon</span>
+    </div>
+
+    <div class="hero-body">
+      <p class="eyebrow">Squire Builds &middot; in active development</p>
+      <h1 class="headline">See what your friends own.<br />Find what you can <em>both</em> play tonight.</h1>
+      <p class="sub">
+        GameSquire is the board game shelf, play log, and friends list built for actually
+        getting a game to the table, not just cataloguing the ones already on your shelf.
+      </p>
+
+      <form class="waitlist" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleWaitlistSubmit(event)">
+        <input type="hidden" name="form-name" value="waitlist" />
+        <p class="hp"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <label class="hp" for="email">Email address</label>
+        <input class="email-input" id="email" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+        <button class="btn-gold" type="submit">Notify me</button>
+      </form>
+      <p class="toast" id="waitlist-toast">You're on the list, we'll be in touch.</p>
+      <p class="form-note">We'll send launch news and nothing else. Unsubscribe anytime.</p>
+    </div>
+
+    <div class="shelf-strip" aria-hidden="true">
+      <div class="spine h1"></div>
+      <div class="spine h2"></div>
+      <div class="spine h3"></div>
+      <div class="spine h4"></div>
+      <div class="spine h5"></div>
+      <div class="spine h6"></div>
+      <div class="spine h7"></div>
+    </div>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <p class="kicker">What it does</p>
+    <h2 class="section-title">Everything a shelf app should be, plus the part they all skip</h2>
+    <p class="section-lede">
+      Track what you own, remember what you've played, and the part every other tracker
+      leaves out. See it all against your friends' shelves too.
+    </p>
+
+    <div class="features">
+      <div class="feature-card">
+        <h3 class="feature-title">Your shelf, your way</h3>
+        <p class="feature-body">
+          Log every game you own and everything you're hoping to get next. Filter by player
+          count, playtime, difficulty, or type when you just need "something for four people
+          in under an hour."
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-title">Every play, remembered</h3>
+        <p class="feature-body">
+          Track who played, who won, how long it ran, and whatever's worth remembering about
+          the game. Tag the friends who were at the table and the play lands in their history
+          too. No double entry.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-title">Match your shelf with a friend's</h3>
+        <p class="feature-body">
+          Add friends, see their collection, and instantly spot the overlap. No more group-chat
+          archaeology to figure out what everyone actually owns before game night.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-title">Track the expansions too</h3>
+        <p class="feature-body">
+          Link expansions to the base game on your shelf, so your collection tells the whole
+          story, not just the box on top.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap">
+    <div class="why-panel">
+      <p>
+        Most shelf-tracking apps stop at your own collection, a private list only you ever
+        look at. GameSquire starts there too, but doesn't stop there: the moment you add a
+        friend, your shelf becomes useful to someone else. A board game collection is more fun
+        when it's not just yours.
+      </p>
+      <p class="attribution">Why GameSquire exists</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <p class="kicker">Pricing &amp; questions</p>
+    <h2 class="section-title">Free to use. No ads, ever.</h2>
+    <p class="section-lede">The core app costs nothing and stays that way. Premium is optional, for people who want more.</p>
+
+    <div class="pricing-row">
+      <span class="price-pill free"><strong>Free</strong> forever, shelf, plays, friends, matching</span>
+      <span class="price-pill"><strong>&euro;2.99</strong>&nbsp;/ month, Premium</span>
+      <span class="price-pill"><strong>&euro;24.99</strong>&nbsp;/ year, Premium &middot; 7-day free trial</span>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">When does it launch?</p>
+        <p class="faq-a">GameSquire is in active development right now. There's no launch date yet. The waitlist is the fastest way to hear as soon as there is one.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">What does it cost?</p>
+        <p class="faq-a">The core app, including collection matching with friends, is free to use, forever, with no ads, ever. A Premium subscription (&euro;2.99/month or &euro;24.99/year, with a 7-day free trial) adds an AI rulebook assistant and box scanning for people who want more.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">What platforms will it be on?</p>
+        <p class="faq-a">iOS, Android, and the web, all from one account.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Is my data private?</p>
+        <p class="faq-a">Your waitlist email is only ever used to send you launch updates. We won't sell it or hand it to anyone else. No ads means no ad trackers watching what you do in the app.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-cta">
+  <div class="wrap">
+    <h2>Be first to know when GameSquire opens up.</h2>
+    <p class="sub">Drop your email above and we'll take it from there.</p>
+    <a class="btn-gold" style="display:inline-block; text-decoration:none; line-height:52px; padding:0 26px;" href="#top">Back to the top &uarr;</a>
+
+    <div class="footer-meta">
+      <span>GameSquire is made by Squire Builds.</span>
+      <span>&copy; 2026 Squire Builds. All rights reserved.</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  function handleWaitlistSubmit(e) {
+    e.preventDefault();
+    var form = e.target;
+    var toast = document.getElementById('waitlist-toast');
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString(),
+    })
+      .then(function () {
+        toast.textContent = "You're on the list, we'll be in touch.";
+        toast.classList.add('show');
+        form.reset();
+      })
+      .catch(function () {
+        toast.textContent = 'Could not submit right now, please try again.';
+        toast.classList.add('show');
+      });
+  }
+</script>
+</body>
+</html>
