@@ -223,32 +223,44 @@
 
   .shelf-strip {
     display: flex;
-    gap: 10px;
+    gap: 14px;
     margin-top: 56px;
-    height: 108px;
+    height: 118px;
     align-items: flex-end;
-  }
-  .spine {
-    flex: 1 1 0;
-    max-width: 64px;
-    border-radius: 8px 8px 3px 3px;
     position: relative;
-    box-shadow: inset 0 -14px 20px -12px rgba(0,0,0,0.35);
+    padding-bottom: 12px;
   }
-  .spine::after {
+  .shelf-strip::after {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(180deg, rgba(255,255,255,0.16), transparent 40%);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent, rgba(201, 150, 44, 0.65) 12%, rgba(201, 150, 44, 0.65) 88%, transparent);
   }
-  .spine.h1 { height: 100%; background: var(--swatch-1); }
-  .spine.h2 { height: 78%; background: var(--swatch-3); }
-  .spine.h3 { height: 92%; background: var(--gold); }
-  .spine.h4 { height: 66%; background: var(--swatch-2); }
-  .spine.h5 { height: 86%; background: var(--swatch-4); }
-  .spine.h6 { height: 58%; background: #d68f8a; }
-  .spine.h7 { height: 96%; background: var(--swatch-3); opacity: 0.7; }
+  .game-box {
+    flex: 1 1 0;
+    max-width: 92px;
+    min-width: 46px;
+    border-radius: 9px;
+    box-shadow: 0 12px 20px -12px rgba(0,0,0,0.5);
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.26) 0 30%, transparent 30%),
+      linear-gradient(180deg, rgba(255,255,255,0.16), transparent 55%);
+  }
+  .game-box.h1 { height: 100%; background-color: var(--swatch-1); }
+  .game-box.h2 { height: 76%; background-color: var(--swatch-3); }
+  .game-box.h3 { height: 92%; background-color: var(--gold); }
+  .game-box.h4 { height: 64%; background-color: var(--swatch-2); }
+  .game-box.h5 { height: 86%; background-color: var(--swatch-4); }
+  .game-box.h6 { height: 58%; background-color: #d68f8a; }
+
+  @media (max-width: 560px) {
+    .shelf-strip { height: 92px; gap: 9px; }
+    .game-box { max-width: 58px; min-width: 34px; }
+  }
 
   /* ---------- Content sections ---------- */
 
@@ -336,15 +348,14 @@
     overflow: hidden;
   }
   .why-panel::before {
-    content: "\201D";
+    content: "";
     position: absolute;
-    top: -0.3em;
-    left: clamp(16px, 4vw, 40px);
-    font-family: 'Domine', serif;
-    font-size: 8rem;
-    color: rgba(201, 150, 44, 0.16);
-    line-height: 1;
-    pointer-events: none;
+    top: 0;
+    left: clamp(24px, 5vw, 56px);
+    width: 40px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--gold);
   }
   .why-panel p {
     position: relative;
@@ -352,7 +363,7 @@
     font-size: clamp(1.15rem, 2.4vw, 1.5rem);
     line-height: 1.5;
     max-width: 52ch;
-    margin: 0;
+    margin: 18px 0 0;
     text-wrap: balance;
   }
   .why-panel .attribution {
@@ -478,13 +489,12 @@
     </div>
 
     <div class="shelf-strip" aria-hidden="true">
-      <div class="spine h1"></div>
-      <div class="spine h2"></div>
-      <div class="spine h3"></div>
-      <div class="spine h4"></div>
-      <div class="spine h5"></div>
-      <div class="spine h6"></div>
-      <div class="spine h7"></div>
+      <div class="game-box h1"></div>
+      <div class="game-box h2"></div>
+      <div class="game-box h3"></div>
+      <div class="game-box h4"></div>
+      <div class="game-box h5"></div>
+      <div class="game-box h6"></div>
     </div>
   </div>
 </div>
@@ -525,8 +535,8 @@
       <div class="feature-card">
         <h3 class="feature-title">Track the expansions too</h3>
         <p class="feature-body">
-          Link expansions to the base game on your shelf, so your collection tells the whole
-          story, not just the box on top.
+          See every expansion that exists for a game on your shelf, not just the ones you already
+          own, so you always know what to add next.
         </p>
       </div>
     </div>
@@ -555,8 +565,7 @@
 
     <div class="pricing-row">
       <span class="price-pill free"><strong>Free</strong> forever, shelf, plays, friends, matching</span>
-      <span class="price-pill"><strong>&euro;2.99</strong>&nbsp;/ month, Premium</span>
-      <span class="price-pill"><strong>&euro;24.99</strong>&nbsp;/ year, Premium &middot; 7-day free trial</span>
+      <span class="price-pill"><strong>Premium</strong>&nbsp;optional, pricing announced closer to launch</span>
     </div>
 
     <div class="faq-list">
@@ -566,7 +575,7 @@
       </div>
       <div class="faq-item">
         <p class="faq-q">What does it cost?</p>
-        <p class="faq-a">The core app, including collection matching with friends, is free to use, forever, with no ads, ever. A Premium subscription (&euro;2.99/month or &euro;24.99/year, with a 7-day free trial) adds an AI rulebook assistant and box scanning for people who want more.</p>
+        <p class="faq-a">The core app, including collection matching with friends, is free to use, forever, with no ads, ever. An optional Premium subscription adds an AI rulebook assistant and box scanning for people who want more — pricing will be announced closer to launch.</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">What platforms will it be on?</p>
