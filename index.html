@@ -159,6 +159,25 @@
 
   .nav-right { display: flex; align-items: center; gap: 14px; }
 
+  .btn-beta {
+    display: inline-flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 16px;
+    border-radius: 10px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .btn-beta:hover { background: var(--gold); color: var(--on-gold); }
+  .btn-beta:focus-visible { outline: 2px solid var(--banner-text); outline-offset: 2px; }
+
   .theme-toggle {
     width: 34px;
     height: 34px;
@@ -310,6 +329,10 @@
   @media (max-width: 560px) {
     .shelf-strip { height: 92px; gap: 9px; }
     .game-box { max-width: 58px; min-width: 34px; }
+  }
+  @media (max-width: 480px) {
+    .hero-nav { flex-wrap: wrap; row-gap: 10px; }
+    .nav-pill { display: none; }
   }
 
   /* ---------- Content sections ---------- */
@@ -519,6 +542,7 @@
     <div class="hero-nav">
       <a class="wordmark" href="#top">GameSquire</a>
       <div class="nav-right">
+        <a class="btn-beta" href="https://beta.gamesquire.app" target="_blank" rel="noopener">Try the web beta</a>
         <span class="nav-pill">Coming soon</span>
         <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">🌙</button>
       </div>
