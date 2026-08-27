@@ -4,17 +4,17 @@
 <meta charset="utf-8" />
 <title>GameSquire, Board Game Shelf, Play Log &amp; Friends App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="GameSquire is the board game shelf, play log, and friends list built for actually getting a game to the table. Join the waitlist." />
+<meta name="description" content="GameSquire ends the endless what-should-we-play debate. Filter your shelf, a friend's or your household's by mood, quick fix or deep dive. Join the waitlist." />
 <meta name="google-site-verification" content="Mc6Qh4XFnSJgFP8l9seakYwFZDTMG0tqeTQXZso9Yk8" />
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GameSquire">
 <meta property="og:url" content="https://gamesquire.app/">
-<meta property="og:title" content="GameSquire, Board game shelf, play log &amp; friends">
-<meta property="og:description" content="GameSquire is the board game shelf, play log, and friends list built for actually getting a game to the table. Join the waitlist.">
+<meta property="og:title" content="GameSquire: Find the mood, pick tonight's game">
+<meta property="og:description" content="GameSquire ends the endless what-should-we-play debate. Filter your shelf, a friend's or your household's by mood, quick fix or deep dive. Free core, no ads, ever. Join the waitlist.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GameSquire, Board game shelf, play log &amp; friends">
-<meta name="twitter:description" content="GameSquire is the board game shelf, play log, and friends list built for actually getting a game to the table. Join the waitlist.">
+<meta name="twitter:title" content="GameSquire: Find the mood, pick tonight's game">
+<meta name="twitter:description" content="GameSquire ends the endless what-should-we-play debate. Filter your shelf, a friend's or your household's by mood, quick fix or deep dive. Free core, no ads, ever. Join the waitlist.">
 
 <script type="application/ld+json">
 {
@@ -22,7 +22,7 @@
   "@type": "SoftwareApplication",
   "name": "GameSquire",
   "url": "https://gamesquire.app/",
-  "description": "GameSquire is the board game shelf, play log, and friends list built for actually getting a game to the table.",
+  "description": "GameSquire ends the what-should-we-play debate by filtering your board game shelf, a friend's or your household's by mood and occasion.",
   "applicationCategory": "LifestyleApplication",
   "operatingSystem": "iOS, Android, Web",
   "offers": {
@@ -232,7 +232,68 @@
   .theme-toggle:hover { filter: brightness(0.96); }
   .theme-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-  .hero-body { max-width: 620px; }
+  .hero-flex {
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 5vw, 56px);
+    flex-wrap: wrap;
+  }
+
+  .hero-body { flex: 1 1 420px; max-width: 560px; }
+
+  .hero-visual {
+    flex: 0 0 auto;
+    width: min(360px, 80vw);
+    margin: 0 auto;
+  }
+
+  .phone-frame {
+    position: relative;
+    border-radius: 30px;
+    background: linear-gradient(180deg, var(--wood-header), var(--wood-deep));
+    padding: 9px;
+    box-shadow: 0 34px 64px -24px rgba(28, 20, 12, 0.55), 0 0 0 1px rgba(201, 150, 44, 0.28);
+    transform: rotate(1.2deg);
+  }
+  .phone-frame img {
+    display: block;
+    width: 100%;
+    border-radius: 21px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+  }
+  .phone-home-indicator {
+    width: 46px;
+    height: 4px;
+    border-radius: 3px;
+    background: rgba(242, 234, 217, 0.4);
+    margin: 10px auto 3px;
+  }
+
+  .mood-badge {
+    position: absolute;
+    top: -14px;
+    right: -18px;
+    background: var(--gold);
+    color: var(--on-gold);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 7px 13px;
+    border-radius: 999px;
+    box-shadow: 0 10px 20px -8px rgba(28, 20, 12, 0.5);
+    white-space: nowrap;
+    transform: rotate(-3deg);
+    text-decoration: none;
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+  .mood-badge:hover { filter: brightness(1.06); transform: rotate(-3deg) translateY(-1px); }
+  .mood-badge:focus-visible { outline: 2px solid var(--banner-text); outline-offset: 2px; }
+
+  @media (max-width: 760px) {
+    .hero-flex { flex-direction: column; }
+    .hero-visual { width: min(320px, 74vw); order: -1; margin-bottom: 8px; }
+    .phone-frame { transform: none; }
+  }
 
   .eyebrow {
     display: inline-flex;
@@ -326,46 +387,6 @@
     margin-top: 12px;
   }
 
-  .shelf-strip {
-    display: flex;
-    gap: 14px;
-    margin-top: 56px;
-    height: 118px;
-    align-items: flex-end;
-    position: relative;
-    padding-bottom: 12px;
-  }
-  .shelf-strip::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 3px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, transparent, rgba(201, 150, 44, 0.65) 12%, rgba(201, 150, 44, 0.65) 88%, transparent);
-  }
-  .game-box {
-    flex: 1 1 0;
-    max-width: 92px;
-    min-width: 46px;
-    border-radius: 9px;
-    box-shadow: 0 12px 20px -12px rgba(0,0,0,0.5);
-    background-image:
-      linear-gradient(180deg, rgba(0,0,0,0.26) 0 30%, transparent 30%),
-      linear-gradient(180deg, rgba(255,255,255,0.16), transparent 55%);
-  }
-  .game-box.h1 { height: 100%; background-color: var(--swatch-1); }
-  .game-box.h2 { height: 76%; background-color: var(--swatch-3); }
-  .game-box.h3 { height: 92%; background-color: var(--gold); }
-  .game-box.h4 { height: 64%; background-color: var(--swatch-2); }
-  .game-box.h5 { height: 86%; background-color: var(--swatch-4); }
-  .game-box.h6 { height: 58%; background-color: #d68f8a; }
-
-  @media (max-width: 560px) {
-    .shelf-strip { height: 92px; gap: 9px; }
-    .game-box { max-width: 58px; min-width: 34px; }
-  }
   @media (max-width: 480px) {
     .hero-nav { flex-wrap: wrap; row-gap: 10px; }
     .nav-pill { display: none; }
@@ -602,31 +623,34 @@ document.addEventListener('click', function (e) {
       </div>
     </div>
 
-    <div class="hero-body">
-      <p class="eyebrow">Squire Builds &middot; in active development</p>
-      <h1 class="headline">See what your friends own.<br />Find what you can <em>both</em> play tonight.</h1>
-      <p class="sub">
-        GameSquire is the board game shelf, play log, and friends list built for actually
-        getting a game to the table, not just cataloguing the ones already on your shelf.
-      </p>
+    <div class="hero-flex">
+      <div class="hero-body">
+        <p class="eyebrow">Squire Builds &middot; in active development</p>
+        <h1 class="headline">Find the mood.<br />Pick <em>tonight's</em> game.</h1>
+        <p class="sub">
+          Every game night starts with the same debate: what do we actually play?
+          GameSquire ends it. One tap filters your shelf, a friend's or your household's
+          by mood, quick after dinner or something deep for the regulars, so tonight's
+          game picks itself.
+        </p>
 
-      <form class="waitlist" name="waitlist" method="POST" onsubmit="handleWaitlistSubmit(event)">
-        <p class="hp"><label>Don't fill this out: <input name="_gotcha" /></label></p>
-        <label class="hp" for="email">Email address</label>
-        <input class="email-input" id="email" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
-        <button class="btn-gold" type="submit">Notify me</button>
-      </form>
-      <p class="toast" id="waitlist-toast">You're on the list, we'll be in touch.</p>
-      <p class="form-note">We'll send launch news and nothing else. Unsubscribe anytime.</p>
-    </div>
+        <form class="waitlist" name="waitlist" method="POST" onsubmit="handleWaitlistSubmit(event)">
+          <p class="hp"><label>Don't fill this out: <input name="_gotcha" /></label></p>
+          <label class="hp" for="email">Email address</label>
+          <input class="email-input" id="email" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+          <button class="btn-gold" type="submit">Notify me</button>
+        </form>
+        <p class="toast" id="waitlist-toast">You're on the list, we'll be in touch.</p>
+        <p class="form-note">We'll send launch news and nothing else. Unsubscribe anytime.</p>
+      </div>
 
-    <div class="shelf-strip" aria-hidden="true">
-      <div class="game-box h1"></div>
-      <div class="game-box h2"></div>
-      <div class="game-box h3"></div>
-      <div class="game-box h4"></div>
-      <div class="game-box h5"></div>
-      <div class="game-box h6"></div>
+      <div class="hero-visual">
+        <div class="phone-frame">
+          <a class="mood-badge" href="https://beta.gamesquire.app" target="_blank" rel="noopener">Find your mood &rarr;</a>
+          <img src="/assets/shelf-preview.jpg" width="382" height="700" alt="GameSquire's My Shelf screen on mobile, showing the Mood &amp; filters toggle above a grid of real board game covers, several tagged Household." loading="eager" />
+          <div class="phone-home-indicator" aria-hidden="true"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -634,41 +658,39 @@ document.addEventListener('click', function (e) {
 <section id="features">
   <div class="wrap">
     <p class="kicker">What it does</p>
-    <h2 class="section-title">Everything a shelf app should be, plus the part they all skip</h2>
+    <h2 class="section-title">What should we play tonight? GameSquire answers that.</h2>
     <p class="section-lede">
-      Track what you own, remember what you've played, and the part every other tracker
-      leaves out. See it all against your friends' shelves too.
+      Not just a catalogue of what you own. Add your friends and your household and the
+      question changes from "what do I have" to "what can we actually play right now."
     </p>
 
     <div class="features">
       <div class="feature-card">
-        <h3 class="feature-title">Your shelf, your way</h3>
+        <h3 class="feature-title">Pick tonight's game by mood</h3>
         <p class="feature-body">
-          Log every game you own and everything you're hoping to get next. Filter by player
-          count, playtime, difficulty, or type, and stack them together, so four players and
-          under an hour narrows your shelf instantly.
-        </p>
-      </div>
-      <div class="feature-card">
-        <h3 class="feature-title">Every play, remembered</h3>
-        <p class="feature-body">
-          Track who played, who won, how long it ran, and whatever's worth remembering about
-          the game. Tag the friends who were at the table and the play lands in their history
-          too. No double entry.
+          Quick Fix, Deep Dive, Date Night, Family Table. One tap filters your shelf, a
+          friend's or your household's down to what actually fits tonight.
         </p>
       </div>
       <div class="feature-card">
         <h3 class="feature-title">Match your shelf with a friend's</h3>
         <p class="feature-body">
-          Add friends, see their collection, and instantly spot the overlap. No more group-chat
-          archaeology to figure out what everyone actually owns before game night.
+          Add friends, see their collection and instantly spot the overlap, plus their
+          wishlist before you buy a gift. No more group-chat archaeology before game night.
         </p>
       </div>
       <div class="feature-card">
-        <h3 class="feature-title">Track the expansions too</h3>
+        <h3 class="feature-title">Share one shelf with your household</h3>
         <p class="feature-body">
-          See every expansion that exists for a game on your shelf, not just the ones you already
-          own, so you always know what to add next.
+          Up to 5 people, one shared collection. Everyone's own ratings and play logs stay
+          personal, the shelf itself stays shared, just like the games on it.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-title">Every play, remembered</h3>
+        <p class="feature-body">
+          Scores, co-op and solo outcomes, wishlist and every expansion for what's on your
+          shelf. Tag the friends who were at the table and it lands in their history too.
         </p>
       </div>
     </div>
@@ -679,10 +701,9 @@ document.addEventListener('click', function (e) {
   <div class="wrap">
     <div class="why-panel">
       <p>
-        Most shelf-tracking apps stop at your own collection, a private list only you ever
-        look at. GameSquire starts there too, but doesn't stop there: the moment you add a
-        friend, your shelf becomes useful to someone else. A board game collection is more fun
-        when it's not just yours.
+        "What should we play tonight" is a decade-old, still-unanswered question on every
+        board game forum. GameSquire ends the back-and-forth: add your friends and your
+        household, filter by mood and the debate is over before it starts.
       </p>
       <p class="attribution">Why GameSquire exists</p>
     </div>
@@ -696,8 +717,8 @@ document.addEventListener('click', function (e) {
     <p class="section-lede">The core app costs nothing and stays that way. Premium is optional, for people who want more.</p>
 
     <div class="pricing-row">
-      <span class="price-pill free"><strong>Free</strong> forever, shelf, plays, friends, matching</span>
-      <span class="price-pill"><strong>Premium</strong>&nbsp;optional, pricing announced closer to launch</span>
+      <span class="price-pill free"><strong>Free</strong> forever: shelf, plays, friends, matching, households</span>
+      <span class="price-pill"><strong>Premium</strong>&nbsp;the game night toolkit, pricing announced closer to launch</span>
     </div>
 
     <div class="faq-list">
@@ -707,15 +728,15 @@ document.addEventListener('click', function (e) {
       </div>
       <div class="faq-item">
         <p class="faq-q">What does it cost?</p>
-        <p class="faq-a">The core app, including collection matching with friends, is free to use, forever, with no ads, ever. An optional Premium subscription adds an AI rulebook assistant and box scanning for people who want more — pricing will be announced closer to launch.</p>
+        <p class="faq-a">The core app is free to use, forever, with no ads, ever: your shelf, play log, friends, collection matching and up to 5 people sharing one household shelf. An optional Premium subscription adds a guided rulebook assistant, box scanning and more for people who want the extra toolkit around game night, pricing will be announced closer to launch.</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">What platforms will it be on?</p>
-        <p class="faq-a">iOS, Android, and the web, all from one account.</p>
+        <p class="faq-a">iOS, Android and the web, all from one account.</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">Is my data private?</p>
-        <p class="faq-a">Your waitlist email is only ever used to send you launch updates. We won't sell it or hand it to anyone else. No ads means no ad trackers watching what you do in the app.</p>
+        <p class="faq-a">Your waitlist email is only ever used to send you launch updates. We won't sell it or hand it to anyone else. No ads means no ad trackers watching what you do in the app. And your collection is never stuck here: it's built on BoardGameGeek's own data and everything exports to CSV for free, whenever you want.</p>
       </div>
     </div>
   </div>
