@@ -610,6 +610,19 @@ document.addEventListener('click', function (e) {
     posthog.capture('outbound_app_click', { href: link.href, link_text: link.textContent.trim() });
   }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  var utmParams = new URLSearchParams();
+  new URLSearchParams(window.location.search).forEach(function (value, key) {
+    if (key.indexOf('utm_') === 0) utmParams.append(key, value);
+  });
+  if (!utmParams.toString()) return;
+  document.querySelectorAll('a[href^="https://beta.gamesquire.app"]').forEach(function (link) {
+    var url = new URL(link.href);
+    utmParams.forEach(function (value, key) { url.searchParams.set(key, value); });
+    link.href = url.toString();
+  });
+});
 </script>
 </head>
 <body>
