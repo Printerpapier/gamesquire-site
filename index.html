@@ -4,17 +4,17 @@
 <meta charset="utf-8" />
 <title>GameSquire: Board Game Collection Tracker, Shelf &amp; Play Log</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="GameSquire is a board game collection tracker that ends the endless what-should-we-play debate. Filter your shelf, a friend's or your household's by mood, quick fix or deep dive. Join the waitlist." />
+<meta name="description" content="GameSquire is a board game tracker that ends the what-should-we-play debate. Filter by mood, match with friends. Free beta on iOS, Android and web." />
 <meta name="google-site-verification" content="Mc6Qh4XFnSJgFP8l9seakYwFZDTMG0tqeTQXZso9Yk8" />
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GameSquire">
 <meta property="og:url" content="https://gamesquire.app/">
 <meta property="og:title" content="GameSquire: Board Game Tracker, Find the Mood, Pick Tonight's Game">
-<meta property="og:description" content="GameSquire is a board game collection tracker that ends the endless what-should-we-play debate. Filter your shelf, a friend's or your household's by mood, quick fix or deep dive. Free core, no ads, ever. Join the waitlist.">
+<meta property="og:description" content="GameSquire is a board game tracker that ends the what-should-we-play debate. Filter your shelf, a friend's or household's by mood. Free core, no ads, ever. Public beta live now on iOS, Android and web.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GameSquire: Board Game Tracker, Find the Mood, Pick Tonight's Game">
-<meta name="twitter:description" content="GameSquire is a board game collection tracker that ends the endless what-should-we-play debate. Filter your shelf, a friend's or your household's by mood, quick fix or deep dive. Free core, no ads, ever. Join the waitlist.">
+<meta name="twitter:description" content="GameSquire is a board game tracker that ends the what-should-we-play debate. Filter your shelf, a friend's or household's by mood. Free core, no ads, ever. Public beta live now on iOS, Android and web.">
 
 <script type="application/ld+json">
 {
@@ -25,6 +25,8 @@
   "description": "GameSquire is a board game collection tracker that ends the what-should-we-play debate by filtering your shelf, a friend's or your household's by mood and occasion.",
   "applicationCategory": "LifestyleApplication",
   "operatingSystem": "iOS, Android, Web",
+  "installUrl": "https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -387,9 +389,67 @@
     margin-top: 12px;
   }
 
+  /* Store buttons: the hero's primary action now that the beta is public. */
+  .store-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .store-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    height: 52px;
+    padding: 0 20px;
+    border-radius: 12px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.15s ease, filter 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .store-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .store-btn.solid {
+    background: var(--gold);
+    color: var(--on-gold);
+    border: 1px solid var(--gold);
+  }
+  .store-btn.solid:hover { filter: brightness(1.06); transform: translateY(-1px); }
+  .store-btn.ghost {
+    background: transparent;
+    color: var(--banner-text);
+    border: 1px solid var(--banner-overlay-border);
+  }
+  .store-btn.ghost:hover { background: var(--banner-overlay-bg); }
+  .store-btn:focus-visible { outline: 2px solid var(--banner-text); outline-offset: 2px; }
+
+  .store-note {
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: var(--banner-text-muted);
+    max-width: 46ch;
+    margin: 0 0 30px;
+  }
+
+  .news-block {
+    border-top: 1px solid var(--banner-overlay-border);
+    padding-top: 22px;
+    max-width: 440px;
+  }
+  .news-lead {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--banner-text-muted);
+    margin: 0 0 14px;
+  }
+
   @media (max-width: 480px) {
     .hero-nav { flex-wrap: wrap; row-gap: 10px; }
     .nav-pill { display: none; }
+    .store-btn { flex: 1 1 100%; }
   }
 
   /* ---------- Content sections ---------- */
@@ -568,6 +628,7 @@
     text-wrap: balance;
   }
   .footer-cta .sub { color: var(--banner-text-muted); margin-bottom: 32px; }
+  .footer-store-row { margin-bottom: 8px; }
 
   .footer-meta {
     margin-top: 56px;
@@ -606,7 +667,7 @@ posthog.init('phc_mfD2teKjbBUVgLeGFnXqNF4cNJecNcyhpLp5b6iLtdji', {
 document.addEventListener('click', function (e) {
   var link = e.target.closest('a[href]');
   if (!link) return;
-  if (/^https?:\/\/(www\.)?(weeksquire\.com|gamesquire\.app|beta\.gamesquire\.app|apps\.apple\.com|play\.google\.com)/.test(link.href)) {
+  if (/^https?:\/\/(www\.)?(weeksquire\.com|gamesquire\.app|beta\.gamesquire\.app|apps\.apple\.com|testflight\.apple\.com|play\.google\.com)/.test(link.href)) {
     posthog.capture('outbound_app_click', { href: link.href, link_text: link.textContent.trim() });
   }
 });
@@ -633,14 +694,14 @@ document.addEventListener('DOMContentLoaded', function () {
       <a class="wordmark" href="#top">GameSquire</a>
       <div class="nav-right">
         <a class="btn-beta" href="https://beta.gamesquire.app" target="_blank" rel="noopener">Try the web beta</a>
-        <span class="nav-pill">Coming soon<br />to iOS &amp; Android</span>
+        <span class="nav-pill">Public beta<br />on iOS &amp; Android</span>
         <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">🌙</button>
       </div>
     </div>
 
     <div class="hero-flex">
       <div class="hero-body">
-        <p class="eyebrow"><a href="https://squirebuilds.com/">Squire Builds</a> &middot; in active development</p>
+        <p class="eyebrow"><a href="https://squirebuilds.com/">Squire Builds</a> &middot; in public beta</p>
         <h1 class="headline">Find the mood.<br />Pick <em>tonight's</em> game.</h1>
         <p class="sub">
           GameSquire is a board game collection tracker built for game night.
@@ -650,14 +711,27 @@ document.addEventListener('DOMContentLoaded', function () {
           game picks itself.
         </p>
 
-        <form class="waitlist" name="waitlist" method="POST" onsubmit="handleWaitlistSubmit(event)">
-          <p class="hp"><label>Don't fill this out: <input name="_gotcha" /></label></p>
-          <label class="hp" for="email">Email address</label>
-          <input class="email-input" id="email" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
-          <button class="btn-gold" type="submit">Notify me</button>
-        </form>
-        <p class="toast" id="waitlist-toast">You're on the list, we'll be in touch.</p>
-        <p class="form-note">We'll send launch news and nothing else. Unsubscribe anytime.</p>
+        <div class="store-row">
+          <a class="store-btn solid" href="https://testflight.apple.com/join/hsn8DtNQ" target="_blank" rel="noopener">Join iOS beta</a>
+          <a class="store-btn solid" href="https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker" target="_blank" rel="noopener">Join Android beta</a>
+          <a class="store-btn ghost" href="https://beta.gamesquire.app" target="_blank" rel="noopener">Try the web beta</a>
+        </div>
+        <p class="store-note">
+          Every platform is free to join right now: iOS opens Apple's TestFlight app,
+          Android installs from Google Play, and web needs nothing at all.
+        </p>
+
+        <div class="news-block">
+          <p class="news-lead">Prefer to wait for 1.0? Leave your email below and we'll tell you the moment it ships.</p>
+          <form class="waitlist" name="waitlist" method="POST" onsubmit="handleWaitlistSubmit(event)">
+            <p class="hp"><label>Don't fill this out: <input name="_gotcha" /></label></p>
+            <label class="hp" for="email">Email address</label>
+            <input class="email-input" id="email" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            <button class="btn-gold" type="submit">Notify me at 1.0</button>
+          </form>
+          <p class="toast" id="waitlist-toast">You're on the list, we'll email you at 1.0.</p>
+          <p class="form-note">We'll only email you when 1.0 launches. Unsubscribe anytime.</p>
+        </div>
       </div>
 
       <div class="hero-visual">
@@ -740,19 +814,19 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="faq-list">
       <div class="faq-item">
         <p class="faq-q">When does it launch?</p>
-        <p class="faq-a">GameSquire is in active development right now. There's no launch date yet. The waitlist is the fastest way to hear as soon as there is one.</p>
+        <p class="faq-a">GameSquire is in public beta right now, free on iOS, Android and web. The full 1.0 release, with Premium, doesn't have a set date yet. Leave your email in the hero if you'd rather wait, and we'll tell you the moment it ships.</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">What does it cost?</p>
         <p class="faq-a">The core app is free to use, forever, with no ads, ever: your shelf, play log, friends, collection matching and up to 5 people sharing one household shelf. An optional Premium subscription adds a guided rulebook assistant, box scanning and more for people who want the extra toolkit around game night, pricing will be announced closer to launch.</p>
       </div>
       <div class="faq-item">
-        <p class="faq-q">What platforms will it be on?</p>
-        <p class="faq-a">iOS, Android and the web, all from one account.</p>
+        <p class="faq-q">What platforms is GameSquire on?</p>
+        <p class="faq-a">iOS, Android and web, all live now, all from one account.</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">Is my data private?</p>
-        <p class="faq-a">Your waitlist email is only ever used to send you launch updates. We won't sell it or hand it to anyone else. No ads means no ad trackers watching what you do in the app. And your collection is never stuck here: it's built on BoardGameGeek's own data and everything exports to CSV for free, whenever you want.</p>
+        <p class="faq-a">If you leave your email for launch news, it is only ever used to send you that. We won't sell it or hand it to anyone else. No ads means no ad trackers watching what you do in the app. And your collection is never stuck here: it's built on BoardGameGeek's own data and everything exports to CSV for free, whenever you want.</p>
       </div>
     </div>
   </div>
@@ -760,9 +834,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <div class="footer-cta">
   <div class="wrap">
-    <h2>Be first to know when GameSquire opens up.</h2>
-    <p class="sub">Drop your email above and we'll take it from there.</p>
-    <a class="btn-gold" style="display:inline-block; text-decoration:none; line-height:52px; padding:0 26px;" href="#top">Back to the top &uarr;</a>
+    <h2>GameSquire is live. Go find tonight's game.</h2>
+    <p class="sub">iOS, Android and web are all live and free to join right now.</p>
+    <div class="store-row footer-store-row">
+      <a class="store-btn solid" href="https://testflight.apple.com/join/hsn8DtNQ" target="_blank" rel="noopener">Join iOS beta</a>
+      <a class="store-btn solid" href="https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker" target="_blank" rel="noopener">Join Android beta</a>
+      <a class="store-btn ghost" href="https://beta.gamesquire.app" target="_blank" rel="noopener">Try the web beta</a>
+    </div>
 
     <div class="footer-meta">
       <span><a href="https://squirebuilds.com">Built by Squire Builds</a></span>
@@ -785,7 +863,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
       .then(function (response) {
         if (!response.ok) throw new Error('submit failed');
-        toast.textContent = "You're on the list, we'll be in touch.";
+        toast.textContent = "You're on the list, we'll email you at 1.0.";
         toast.classList.add('show');
         form.reset();
         if (window.posthog) posthog.capture('waitlist_signup');
