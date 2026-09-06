@@ -260,6 +260,7 @@
   .phone-frame img {
     display: block;
     width: 100%;
+    height: auto;
     border-radius: 21px;
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
   }
@@ -590,6 +591,16 @@
     font-size: 1rem;
   }
   .price-pill.free { border-color: var(--gold); background: transparent; }
+
+  @media (max-width: 640px) {
+    .price-pill {
+      display: block;
+      width: 100%;
+      border-radius: 14px;
+      padding: 13px 18px;
+      line-height: 1.55;
+    }
+  }
   .price-pill.free strong { color: var(--gold); }
 
   .faq-list { display: flex; flex-direction: column; }
