@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Privacy Policy | GameSquire</title>
+<title>Page not found | GameSquire</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="How GameSquire (Squire Builds) collects, uses, and protects your data." />
-<link rel="canonical" href="https://gamesquire.app/privacy">
+<meta name="description" content="That page is not on gamesquire.app. Head back to the home page or jump straight into the public beta." />
 <meta name="robots" content="noindex">
 
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADyUlEQVR4AexXTUhUURj9emKUP0WGpRS0kCILBktyEbSqaII27fpP926ijYskw40YgYm7ILMIlYigBMeMRAqMCVsVyqiRUSOUGTozUo79vPP0Pu68d8e57290YILTvfe7373vnPuduc+nHN5X8i+ToVCG/8sKWO0CZiuQrYDDE3DFQttLSojBV1FBDMf9J4nH+cvVBCDmkLe+3LGA5pYW6ujq1tHccpsYrtbVEY+LNTUEIOaWCCkBRYV5dOJgOdWeOkL1Z/xaH0cAIr6KA+haxoXqan1N1d4NVH9pi4azxwqobEeuPpeqk1SAkbS/spzKSosJcfQhyGeTPEjBcj7VbiAL0kWbcgiAmNrTm3UxGCMHa0RIEAByIMZOGkRBWrSwas8uzfeiOSuxc0cLhOlMDMTxgoxiFEYa1gD8yyct3JULYh03tNWt3J2rnbrMYiaIF4N1CiPtBiFsaAUbcxespOu5TAyqk2AhPUOy8zsyK5kpTttZ+F08IRndWphDimSuME1R1gnjskG7FeD3dySA38hqf/bTgNUlpvwfkT/OKmDa0UIgNv3BQrY4deLLIikTU/Z9uBCdE+8sEZ3/9l4ia+WU4OgvUsbC0ytneTAL+8Tn7R8cKIE8WuXt2CTatMIt+4C0MhOZJzkbId0duGGf8fDSO0S7hezaaDFm7zfg1D44xpm5v2iWbqHxqfT9DuB/7ckO/mP+xxZaBWAhAAGv4ab/wVUTgI4dG9m5Rt3wv6kCEJAOG8E+Tv3PkwdvvQI/ozGMPYXb9gFZXQCu02DI23eCG/Zh1yfIA7oADIKhz2ikEY9FpHOR6NQ+2INdn+gDCQK8tBH8jwc6gdH/2CtBAGzk1XXqhf9NAhDoHR5FI4XFmPwXmRv+T1kBsLZio4Wo/G9gff42bG8bIvLYLMFCCHhpI+xvF/h4Ea01CUCSrI3i6h9z4aF+LEmJ0kO1lF+8P2VesgTj9cnyhAKs2Cj8cYyGAj30ZnCA+gO9Gh60t5MRra136dFQHg1M+uh1qIiSWYIR49uJr3EyXp9sXigANuocHGY5phbzgeERaut5RdfudNONppvUcL2BbjU1aXjYcY+MYOKePntJj5+HqPNFlBrvz1Dbk1kKBNVvEpWk6UHLgV51frlraoQCkDWufisHuTczT7qxK0B970YcfwjhVHG6fSpBCIEgCOOrgzFywEmEpAJAGFXAKYMw4AZpEQkWgyCQB+krbdMEYMzmRW1SASwZLzaIYeO11qYUsNYIG/l4I8D4FA/HWQEeHq7U1tkKSB2Th0kZX4H/AAAA//9LR/V5AAAABklEQVQDAPO1/YCtjvIMAAAAAElFTkSuQmCC" />
@@ -160,6 +159,24 @@
     color: var(--banner-text-faint);
   }
   .footer-meta a { text-decoration: underline; text-underline-offset: 2px; }
+
+  /* Short page: keep the footer on the bottom edge instead of floating mid-screen. */
+  body { display: flex; flex-direction: column; min-height: 100vh; }
+  main { flex: 1 0 auto; }
+  footer { flex-shrink: 0; }
+
+  .notfound .code {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); margin: 0 0 10px;
+  }
+  .notfound p.lead { color: var(--ink-secondary); font-size: 1.02rem; line-height: 1.65; margin: 0 0 30px; max-width: 46ch; }
+  .notfound-cta {
+    display: inline-block; padding: 11px 20px; border-radius: 10px;
+    background: var(--gold); color: var(--on-gold);
+    text-decoration: none; font-size: 0.98rem; font-weight: 600;
+  }
+  .notfound-cta:hover { filter: brightness(1.06); }
 </style>
 <script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Oo Lo $o init rl nl tl el ll pa il hl Ko capture sl Ao gl calculateEventProperties pl register register_once register_for_session unregister unregister_for_session Xo ml getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync wl identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset kl shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty yl cl createPersonProfile setInternalOrTestUser bl Do No opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing dl debug ma kn getPageViewId captureTraceFeedback captureTraceMetric Go".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -192,41 +209,11 @@ document.addEventListener('click', function (e) {
 </header>
 
 <main>
-  <div class="wrap">
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: September 2026</p>
-
-    <div class="prose">
-      <h2>1. Who we are</h2>
-      <p>GameSquire is made by Squire Builds, a sole proprietorship operated by Vincent Demeulenaere, based in Belgium. We're the data controller for the information described below. Contact us at <a href="mailto:support@squirebuilds.com">support@squirebuilds.com</a> with any question or request.</p>
-
-      <h2>2. What we collect</h2>
-      <p>If you join the waitlist on this site: your email address. If you use the GameSquire app: your email address and password (handled by our authentication provider, we never see your password in plain text), profile info (display name, username, and avatar you choose), and your data (the games you add to your shelf or wishlist, the plays you log, and your friend connections). We don't collect location, contacts, or device identifiers beyond what's needed to keep you signed in.</p>
-
-      <h2>3. Why we collect it</h2>
-      <p>To run the app and send launch updates to the waitlist. We also use your email address for account emails you cannot opt out of, such as confirming your address or resetting your password, and occasionally to tell you about GameSquire itself: a new release, a significant new feature, or the move out of beta and what Premium costs. You can unsubscribe from those updates at any time with the link in each one, and doing so never affects your account. We also use privacy-focused product analytics (cookieless on this website, tied to your account inside the app) to see which pages and features people actually use, so we can improve GameSquire. Inside the mobile app, this can include session recordings of your on-screen activity, used only to find and fix bugs; password fields are automatically hidden in these recordings. We don't sell your data or use it for advertising. GameSquire has no ads and no ad tracking of any kind.</p>
-
-      <h2>4. Who can see what</h2>
-      <p>Inside the app, your profile (display name, username, avatar) is visible to other signed-in users so they can find and add you as a friend. Your shelf, wishlist, and play log are visible only to accepted friends, in the ways the app is designed to show them (e.g. "games you both own"). Your waitlist email is never shown to anyone else.</p>
-
-      <h2>5. Where it's stored</h2>
-      <p>We use Supabase, a third-party infrastructure provider, to host the app's database and handle authentication, and PostHog (hosted in the EU) to record the product-analytics events and session recordings described in section 3. If we add paid subscriptions, billing is handled by Apple or Google directly; we don't see or store your payment details.</p>
-
-      <h2>6. How long we keep it</h2>
-      <p>We keep your data for as long as your account is active, or until you unsubscribe from the waitlist. You can delete your app account at any time from Profile → Delete account, which permanently removes your profile, collection, play logs, and friend connections.</p>
-
-      <h2>7. Your rights</h2>
-      <p>Under EU/Belgian data protection law (GDPR), you can request access to, correction of, or a copy of your data, and can request deletion at any time (see above, or email us). If you believe we've mishandled your data, you can lodge a complaint with the Belgian Data Protection Authority (gegevensbeschermingsautoriteit.be).</p>
-
-      <h2>8. Children</h2>
-      <p>GameSquire isn't directed at children under 16. If you believe a child has created an account or joined the waitlist without appropriate consent, contact us and we'll remove it.</p>
-
-      <h2>9. Changes</h2>
-      <p>We may update this policy as the app changes. Material changes will be reflected here with an updated date.</p>
-
-      <h2>10. Contact</h2>
-      <p>Squire Builds: <a href="mailto:support@squirebuilds.com">support@squirebuilds.com</a></p>
-    </div>
+  <div class="wrap notfound">
+    <p class="code">Error 404</p>
+    <h1>This page isn't on the shelf</h1>
+    <p class="lead">The page you were looking for isn't here. It may have moved, or the link that brought you here may be wrong.</p>
+    <a class="notfound-cta" href="/">Go to the home page</a>
   </div>
 </main>
 

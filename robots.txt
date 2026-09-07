@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+# Cloudflare's own endpoints (email-address obfuscation, challenges).
+# Not pages, and the email-protection one returns a 404 to crawlers.
+Disallow: /cdn-cgi/
 
 Sitemap: https://gamesquire.app/sitemap.xml
