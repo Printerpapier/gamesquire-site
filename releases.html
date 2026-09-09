@@ -2,39 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Page not found | GameSquire</title>
+<title>Release log | GameSquire</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="That page is not on gamesquire.app. Head back to the home page or jump straight into the public beta." />
-<meta name="robots" content="noindex">
+<meta name="description" content="Every GameSquire release and what changed in it. " />
+<link rel="canonical" href="https://gamesquire.app/releases">
 
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADyUlEQVR4AexXTUhUURj9emKUP0WGpRS0kCILBktyEbSqaII27fpP926ijYskw40YgYm7ILMIlYigBMeMRAqMCVsVyqiRUSOUGTozUo79vPP0Pu68d8e57290YILTvfe7373vnPuduc+nHN5X8i+ToVCG/8sKWO0CZiuQrYDDE3DFQttLSojBV1FBDMf9J4nH+cvVBCDmkLe+3LGA5pYW6ujq1tHccpsYrtbVEY+LNTUEIOaWCCkBRYV5dOJgOdWeOkL1Z/xaH0cAIr6KA+haxoXqan1N1d4NVH9pi4azxwqobEeuPpeqk1SAkbS/spzKSosJcfQhyGeTPEjBcj7VbiAL0kWbcgiAmNrTm3UxGCMHa0RIEAByIMZOGkRBWrSwas8uzfeiOSuxc0cLhOlMDMTxgoxiFEYa1gD8yyct3JULYh03tNWt3J2rnbrMYiaIF4N1CiPtBiFsaAUbcxespOu5TAyqk2AhPUOy8zsyK5kpTttZ+F08IRndWphDimSuME1R1gnjskG7FeD3dySA38hqf/bTgNUlpvwfkT/OKmDa0UIgNv3BQrY4deLLIikTU/Z9uBCdE+8sEZ3/9l4ia+WU4OgvUsbC0ytneTAL+8Tn7R8cKIE8WuXt2CTatMIt+4C0MhOZJzkbId0duGGf8fDSO0S7hezaaDFm7zfg1D44xpm5v2iWbqHxqfT9DuB/7ckO/mP+xxZaBWAhAAGv4ab/wVUTgI4dG9m5Rt3wv6kCEJAOG8E+Tv3PkwdvvQI/ozGMPYXb9gFZXQCu02DI23eCG/Zh1yfIA7oADIKhz2ikEY9FpHOR6NQ+2INdn+gDCQK8tBH8jwc6gdH/2CtBAGzk1XXqhf9NAhDoHR5FI4XFmPwXmRv+T1kBsLZio4Wo/G9gff42bG8bIvLYLMFCCHhpI+xvF/h4Ea01CUCSrI3i6h9z4aF+LEmJ0kO1lF+8P2VesgTj9cnyhAKs2Cj8cYyGAj30ZnCA+gO9Gh60t5MRra136dFQHg1M+uh1qIiSWYIR49uJr3EyXp9sXigANuocHGY5phbzgeERaut5RdfudNONppvUcL2BbjU1aXjYcY+MYOKePntJj5+HqPNFlBrvz1Dbk1kKBNVvEpWk6UHLgV51frlraoQCkDWufisHuTczT7qxK0B970YcfwjhVHG6fSpBCIEgCOOrgzFywEmEpAJAGFXAKYMw4AZpEQkWgyCQB+krbdMEYMzmRW1SASwZLzaIYeO11qYUsNYIG/l4I8D4FA/HWQEeHq7U1tkKSB2Th0kZX4H/AAAA//9LR/V5AAAABklEQVQDAPO1/YCtjvIMAAAAAElFTkSuQmCC" />
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Domine:wght@500;700&family=Work+Sans:wght@400;500;600;700&display=swap');
 
   :root {
-    --wood-header: #3a2a18;
-    --wood-deep: #1c140c;
-    --wood-frame: #241a10;
     --wood-text: #f2ead9;
-    --wood-text-muted: #d8c4a2;
     --wood-text-faint: #a3927c;
-
     --gold: #c9962c;
-    --on-gold: #241a10;
-
     --bg: #f2ead9;
     --surface: #fffaf0;
     --border: rgba(36, 26, 16, 0.2);
     --ink: #241a10;
     --ink-secondary: rgba(36, 26, 16, 0.78);
     --ink-tertiary: rgba(36, 26, 16, 0.62);
-
     color-scheme: light;
-
     --banner-bg: var(--surface);
     --banner-border: var(--border);
     --banner-text: var(--ink);
-    --banner-text-muted: var(--ink-secondary);
     --banner-text-faint: var(--ink-tertiary);
     --banner-overlay-bg: rgba(36, 26, 16, 0.05);
     --banner-overlay-border: rgba(36, 26, 16, 0.16);
@@ -48,10 +37,9 @@
       --ink: #f2ead9;
       --ink-secondary: rgba(242, 234, 217, 0.7);
       --ink-tertiary: rgba(242, 234, 217, 0.52);
-      --banner-bg: var(--wood-deep);
-      --banner-border: var(--wood-frame);
+      --banner-bg: #1c140c;
+      --banner-border: #241a10;
       --banner-text: var(--wood-text);
-      --banner-text-muted: var(--wood-text-muted);
       --banner-text-faint: var(--wood-text-faint);
       --banner-overlay-bg: rgba(242, 234, 217, 0.06);
       --banner-overlay-border: rgba(242, 234, 217, 0.18);
@@ -64,17 +52,15 @@
     --ink: #f2ead9;
     --ink-secondary: rgba(242, 234, 217, 0.7);
     --ink-tertiary: rgba(242, 234, 217, 0.52);
-    --banner-bg: var(--wood-deep);
-    --banner-border: var(--wood-frame);
+    --banner-bg: #1c140c;
+    --banner-border: #241a10;
     --banner-text: var(--wood-text);
-    --banner-text-muted: var(--wood-text-muted);
     --banner-text-faint: var(--wood-text-faint);
     --banner-overlay-bg: rgba(242, 234, 217, 0.06);
     --banner-overlay-border: rgba(242, 234, 217, 0.18);
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
@@ -135,15 +121,26 @@
     letter-spacing: -0.01em;
     margin: 0 0 8px;
   }
-  .updated { font-size: 0.85rem; color: var(--ink-tertiary); margin: 0 0 40px; }
-  .prose h2 {
+  .intro { font-size: 0.95rem; color: var(--ink-secondary); margin: 0 0 44px; max-width: 56ch; }
+  .intro a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+
+  .release { padding: 0 0 8px; margin: 0 0 36px; border-bottom: 1px solid var(--border); }
+  .release:last-of-type { border-bottom: 0; }
+  .release h2 {
     font-family: 'Domine', serif;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    margin: 32px 0 10px;
+    margin: 0 0 4px;
   }
-  .prose p { margin: 0 0 4px; color: var(--ink-secondary); line-height: 1.65; }
-  .prose a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+  .release-meta { font-size: 0.82rem; color: var(--ink-tertiary); margin: 0 0 14px; }
+  .version {
+    font-weight: 600;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+  }
+  .release ul { margin: 0 0 24px; padding-left: 20px; }
+  .release li { color: var(--ink-secondary); line-height: 1.65; margin-bottom: 6px; }
+  .empty { color: var(--ink-secondary); }
 
   footer {
     background: var(--banner-bg);
@@ -159,24 +156,6 @@
     color: var(--banner-text-faint);
   }
   .footer-meta a { text-decoration: underline; text-underline-offset: 2px; }
-
-  /* Short page: keep the footer on the bottom edge instead of floating mid-screen. */
-  body { display: flex; flex-direction: column; min-height: 100vh; }
-  main { flex: 1 0 auto; }
-  footer { flex-shrink: 0; }
-
-  .notfound .code {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--gold); margin: 0 0 10px;
-  }
-  .notfound p.lead { color: var(--ink-secondary); font-size: 1.02rem; line-height: 1.65; margin: 0 0 30px; max-width: 46ch; }
-  .notfound-cta {
-    display: inline-block; padding: 11px 20px; border-radius: 10px;
-    background: var(--gold); color: var(--on-gold);
-    text-decoration: none; font-size: 0.98rem; font-weight: 600;
-  }
-  .notfound-cta:hover { filter: brightness(1.06); }
 </style>
 <script src="/assets/analytics.js" defer></script>
 </head>
@@ -190,18 +169,20 @@
 </header>
 
 <main>
-  <div class="wrap notfound">
-    <p class="code">Error 404</p>
-    <h1>This page isn't on the shelf</h1>
-    <p class="lead">The page you were looking for isn't here. It may have moved, or the link that brought you here may be wrong.</p>
-    <a class="notfound-cta" href="/">Go to the home page</a>
+  <div class="wrap">
+    <h1>Release log</h1>
+    <p class="intro">
+      Every GameSquire release and what changed in it, newest first. The app itself shows you the
+      newest one; this is the whole history. <a href="/">Back to GameSquire</a>.
+    </p>
+
+      <p class="empty">No releases published yet. This page fills up as GameSquire ships.</p>
   </div>
 </main>
 
 <footer>
   <div class="wrap footer-meta">
     <span><a href="https://squirebuilds.com">Built by Squire Builds</a></span>
-    <span><a href="/releases">Release log</a></span>
     <span><a href="https://squirebuilds.com/gamesquire/">Board game guides</a></span>
     <span><a href="https://x.com/SquireBuilds" target="_blank" rel="noopener">Follow on X</a></span>
     <span>&copy; 2026 Squire Builds. All rights reserved.</span>
