@@ -5,4 +5,10 @@
 # Deliberately NOT a catch-all: on Cloudflare a matching rule wins even when a real file exists at
 # the path, the opposite of Netlify, so a broad pattern here would shadow real pages and the
 # /.well-known files that universal links depend on.
-/u/*    /u.html    200
+# The target is invite.html, NOT u.html, and the name matters. Cloudflare exposes a top-level
+# HTML file at its extensionless path, so a u.html here becomes /u, and it then normalises
+# /u/<username> to /u with a 308 BEFORE this rule is consulted - which returns 200 and looks
+# fine while silently stripping the username the page exists to read. Verified on the live
+# domain, not locally: a local server has no such normalisation, so this cannot be caught
+# before deploying.
+/u/*    /invite    200
