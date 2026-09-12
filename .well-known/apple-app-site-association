@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["U5U56S84NN.com.squirebuilds.tabletracker"],
+        "components": [
+          {
+            "/": "/u/*",
+            "comment": "Profile links. Opens GameSquire on the add-friend screen for that username; every other path on gamesquire.app stays in the browser."
+          }
+        ]
+      }
+    ]
+  }
+}

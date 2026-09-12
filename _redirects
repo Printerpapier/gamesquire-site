@@ -1,0 +1,8 @@
+# Profile invite links. /u/<username> is one static page that fills the handle in from the URL;
+# there is no per-person file and nothing is looked up. 200 rewrites rather than redirects, so the
+# address the recipient was sent is the address they keep.
+#
+# Deliberately NOT a catch-all: on Cloudflare a matching rule wins even when a real file exists at
+# the path, the opposite of Netlify, so a broad pattern here would shadow real pages and the
+# /.well-known files that universal links depend on.
+/u/*    /u.html    200

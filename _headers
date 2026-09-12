@@ -6,6 +6,12 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' https://e.gamesquire.app; connect-src 'self' https://formspree.io https://e.gamesquire.app; form-action 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
 
+# Apple fetches this to verify universal links and requires JSON. The file has no extension, so
+# Cloudflare would otherwise serve it as text/html and iOS would reject it silently - links would
+# simply keep opening in the browser with nothing reported anywhere.
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+
 # The *.pages.dev copies of this site are a full duplicate of the custom domain.
 # Cloudflare noindexes preview deployments on its own but NOT the production
 # alias, so name both here. Host-scoped rules use Cloudflare's ':placeholder'

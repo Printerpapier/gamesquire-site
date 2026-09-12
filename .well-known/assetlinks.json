@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.squirebuilds.tabletracker",
+      "sha256_cert_fingerprints": [
+        "F7:3E:92:03:0A:44:E3:85:A9:74:A2:46:E0:59:27:86:85:7E:5E:6E:DE:48:89:42:B0:41:19:58:C1:02:F9:62"
+      ]
+    }
+  }
+]
