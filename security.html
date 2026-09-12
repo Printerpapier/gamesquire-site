@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Privacy Policy | GameSquire</title>
+<title>Security | GameSquire</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="How GameSquire (Squire Builds) collects, uses, and protects your data." />
-<link rel="canonical" href="https://gamesquire.app/privacy">
-<meta name="robots" content="noindex">
+<meta name="description" content="How GameSquire handles secrets, access control and your data, including what we cannot claim." />
+<link rel="canonical" href="https://gamesquire.app/security">
 
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADyUlEQVR4AexXTUhUURj9emKUP0WGpRS0kCILBktyEbSqaII27fpP926ijYskw40YgYm7ILMIlYigBMeMRAqMCVsVyqiRUSOUGTozUo79vPP0Pu68d8e57290YILTvfe7373vnPuduc+nHN5X8i+ToVCG/8sKWO0CZiuQrYDDE3DFQttLSojBV1FBDMf9J4nH+cvVBCDmkLe+3LGA5pYW6ujq1tHccpsYrtbVEY+LNTUEIOaWCCkBRYV5dOJgOdWeOkL1Z/xaH0cAIr6KA+haxoXqan1N1d4NVH9pi4azxwqobEeuPpeqk1SAkbS/spzKSosJcfQhyGeTPEjBcj7VbiAL0kWbcgiAmNrTm3UxGCMHa0RIEAByIMZOGkRBWrSwas8uzfeiOSuxc0cLhOlMDMTxgoxiFEYa1gD8yyct3JULYh03tNWt3J2rnbrMYiaIF4N1CiPtBiFsaAUbcxespOu5TAyqk2AhPUOy8zsyK5kpTttZ+F08IRndWphDimSuME1R1gnjskG7FeD3dySA38hqf/bTgNUlpvwfkT/OKmDa0UIgNv3BQrY4deLLIikTU/Z9uBCdE+8sEZ3/9l4ia+WU4OgvUsbC0ytneTAL+8Tn7R8cKIE8WuXt2CTatMIt+4C0MhOZJzkbId0duGGf8fDSO0S7hezaaDFm7zfg1D44xpm5v2iWbqHxqfT9DuB/7ckO/mP+xxZaBWAhAAGv4ab/wVUTgI4dG9m5Rt3wv6kCEJAOG8E+Tv3PkwdvvQI/ozGMPYXb9gFZXQCu02DI23eCG/Zh1yfIA7oADIKhz2ikEY9FpHOR6NQ+2INdn+gDCQK8tBH8jwc6gdH/2CtBAGzk1XXqhf9NAhDoHR5FI4XFmPwXmRv+T1kBsLZio4Wo/G9gff42bG8bIvLYLMFCCHhpI+xvF/h4Ea01CUCSrI3i6h9z4aF+LEmJ0kO1lF+8P2VesgTj9cnyhAKs2Cj8cYyGAj30ZnCA+gO9Gh60t5MRra136dFQHg1M+uh1qIiSWYIR49uJr3EyXp9sXigANuocHGY5phbzgeERaut5RdfudNONppvUcL2BbjU1aXjYcY+MYOKePntJj5+HqPNFlBrvz1Dbk1kKBNVvEpWk6UHLgV51frlraoQCkDWufisHuTczT7qxK0B970YcfwjhVHG6fSpBCIEgCOOrgzFywEmEpAJAGFXAKYMw4AZpEQkWgyCQB+krbdMEYMzmRW1SASwZLzaIYeO11qYUsNYIG/l4I8D4FA/HWQEeHq7U1tkKSB2Th0kZX4H/AAAA//9LR/V5AAAABklEQVQDAPO1/YCtjvIMAAAAAElFTkSuQmCC" />
 <style>
@@ -174,39 +173,41 @@
 
 <main>
   <div class="wrap">
-    <h1>Privacy Policy</h1>
+    <h1>Security</h1>
     <p class="updated">Last updated: September 2026</p>
 
     <div class="prose">
-      <h2>1. Who we are</h2>
-      <p>GameSquire is made by Squire Builds, a sole proprietorship operated by Vincent Demeulenaere, based in Belgium. We're the data controller for the information described below. Contact us at <a href="mailto:support@squirebuilds.com">support@squirebuilds.com</a> with any question or request.</p>
+      <p>People ask, reasonably, what happens to their data in a small app from a developer they have never met. The correct default is to assume an app is insecure until shown otherwise, so this page is not a promise that GameSquire is safe. It is a description of how it is built, specific enough that you can judge for yourself, including the parts that are not reassuring.</p>
 
-      <h2>2. What we collect</h2>
-      <p>If you join the waitlist on this site: your email address. If you use the GameSquire app: your email address and password (handled by our authentication provider, we never see your password in plain text), profile info (display name, username, and avatar you choose), and your data (the games you add to your shelf or wishlist, the plays you log, and your friend connections). We don't collect location, contacts, or device identifiers beyond what's needed to keep you signed in.</p>
+      <h2>There are no secrets in the app</h2>
+      <p>The app on your phone contains exactly two credentials: the address of our database and a <em>publishable</em> key. Both are public by design, in the same way a website's address is public. Everything that actually needs protecting &mdash; the keys for AI features, email delivery, the board game database, and the administrative database key &mdash; lives only in server-side configuration. None of it has ever been in the app or in the source code, so there is nothing in the download for anyone to extract.</p>
 
-      <h2>3. Why we collect it</h2>
-      <p>To run the app and send launch updates to the waitlist. We also use your email address for account emails you cannot opt out of, such as confirming your address or resetting your password, and occasionally to tell you about GameSquire itself: a new release, a significant new feature, or the move out of beta and what Premium costs. You can unsubscribe from those updates at any time with the link in each one, and doing so never affects your account. We also use privacy-focused product analytics (cookieless on this website, tied to your account inside the app) to see which pages and features people actually use, so we can improve GameSquire. Inside the mobile app, this can include session recordings of your on-screen activity, used only to find and fix bugs; password fields are automatically hidden in these recordings. We don't sell your data or use it for advertising. GameSquire has no ads and no ad tracking of any kind.</p>
+      <h2>The app being well-behaved is not the security model</h2>
+      <p>Because that publishable key is public, we assume every request comes from someone holding it rather than from our own screens. Access control lives in the database, not in the app. Every one of our 21 tables has row-level security switched on, and has since the first day the database existed: the database itself decides which rows you are allowed to read, so a modified app, a script, or anyone with the key gets exactly the same answer you would.</p>
+      <p>On top of that, permissions restrict what you can change even on your own account. The only columns your sign-in can write are your username, display name, avatar, and two flags recording whether you have seen the intro and finished setting up. Nothing else. You cannot grant yourself a paid subscription. Game information that comes from BoardGameGeek cannot be written by an app at all &mdash; the server fetches it. Every server-side function works out who you are from your verified sign-in session, never from what the request claims about itself.</p>
+      <p>That last rule exists because a review found a real gap: a rule correctly stopped one person overwriting another's data, but never checked that a value had come from BoardGameGeek in the first place, so any signed-in account could have written arbitrary text into an empty field. The fetch moved to the server and the app's ability to write those fields was removed entirely. It is mentioned here because a security page listing only successes tells you nothing about whether anyone is looking.</p>
 
-      <h2>4. Who can see what</h2>
-      <p>Inside the app, your profile (display name, username, avatar) is visible to other signed-in users so they can find and add you as a friend. Your shelf, wishlist, and play log are visible only to accepted friends, in the ways the app is designed to show them (e.g. "games you both own"). Your waitlist email is never shown to anyone else.</p>
+      <h2>What we actually hold</h2>
+      <p>An email address, a display name, and the games and plays you enter. No location, no contacts, no postal address, no payment details, no advertising SDK, and no ad tracking of any kind &mdash; there are no ads in GameSquire and there never will be. When paid subscriptions arrive, Apple and Google handle the billing, so card details never reach anything we operate.</p>
+      <p>We never see your password. It is hashed by our authentication provider and is not readable by us at any point. If you sign in with Apple or Google there is no password at all, and if you use Apple's Hide My Email we never learn your real address either. We would still recommend a unique password if you use one &mdash; that advice holds everywhere, and it is the one part of this that is not ours to control.</p>
+      <p>We do use product analytics to see which features get used, and on mobile that can include session recordings used for fixing bugs, with password fields automatically hidden. That is described properly in the <a href="/privacy">privacy policy</a>, which is the authoritative document on what is collected and why.</p>
 
-      <h2>5. Where it's stored</h2>
-      <p>We use Supabase, a third-party infrastructure provider, to host the app's database and handle authentication, and PostHog (hosted in the EU) to record the product-analytics events and session recordings described in section 3. If we add paid subscriptions, billing is handled by Apple or Google directly; we don't see or store your payment details.</p>
+      <h2>Who can see your data</h2>
+      <p>Your profile &mdash; display name, username, avatar &mdash; is visible to any signed-in user, because friend search needs it to work. Your shelf, your wishlist and your play log are visible only to friends whose requests you have accepted, and only in the ways the app is designed to show them. Shared game records and rulebook uploads are crowd-sourced, so any signed-in user can contribute to those; they contain no personal data.</p>
 
-      <h2>6. How long we keep it</h2>
-      <p>We keep your data for as long as your account is active, or until you unsubscribe from the waitlist. You can delete your app account at any time from Profile → Delete account, which permanently removes your profile, collection, play logs, and friend connections.</p>
+      <h2>Backups</h2>
+      <p>The database is backed up nightly. The backups are encrypted before they are stored, and every one of them is automatically restored into a clean database with the row counts checked coming out, because a backup nobody has ever restored is not a backup &mdash; it is a file you hope about. If a restore ever fails, it fails that night, not on the day it matters.</p>
 
-      <h2>7. Your rights</h2>
-      <p>Under EU/Belgian data protection law (GDPR), you can request access to, correction of, or a copy of your data, and can request deletion at any time (see above, or email us). If you believe we've mishandled your data, you can lodge a complaint with the Belgian Data Protection Authority (gegevensbeschermingsautoriteit.be).</p>
+      <h2>Getting your data out, and deleting it</h2>
+      <p>You can export your entire shelf and wishlist to CSV at any time, from inside the app, without asking us. Deleting your account from Profile &rarr; Delete account removes your profile, collection, play logs and friend connections. There is no waiting period and no retention trick; the point of the export is that leaving costs you nothing.</p>
 
-      <h2>8. Children</h2>
-      <p>GameSquire isn't directed at children under 16. If you believe a child has created an account or joined the waitlist without appropriate consent, contact us and we'll remove it.</p>
+      <h2>What we cannot claim</h2>
+      <p>There has been no third-party penetration test. There is no SOC 2 report, no ISO certification, and no bug bounty programme. GameSquire is built by one person, and the honest phrasing is "designed defensively and reviewed carefully", not "proven secure". You should weigh it accordingly &mdash; that is the whole reason this page describes mechanisms instead of offering assurances.</p>
+      <p>Being on the App Store and Google Play is not a second opinion either. Store review checks that an app does not misbehave and does not lie about what it collects; Google additionally scans for malware and known-vulnerable components. Neither of them has ever looked at our server, our database rules, or who can read what. Treat store approval as a distribution check, not a security audit.</p>
+      <p>What is true is that the worst case here is bounded. If everything above failed at once, what an attacker would learn is which board games you own &mdash; information that, for many of our users, is already public on their BoardGameGeek profile. There is no financial data, no identity documents, nothing medical. That does not excuse a breach, but it is worth knowing what you are actually risking by signing up.</p>
 
-      <h2>9. Changes</h2>
-      <p>We may update this policy as the app changes. Material changes will be reflected here with an updated date.</p>
-
-      <h2>10. Contact</h2>
-      <p>Squire Builds: <a href="mailto:support@squirebuilds.com">support@squirebuilds.com</a></p>
+      <h2>Found something?</h2>
+      <p>Email <a href="mailto:support@squirebuilds.com">support@squirebuilds.com</a>. You will get a reply from the person who wrote the code, not a ticketing system. Report anything in good faith and we will not come after you for it; we will fix it, and if it affected anyone's data we will say so publicly rather than quietly.</p>
     </div>
   </div>
 </main>
@@ -216,7 +217,6 @@
     <span><a href="https://squirebuilds.com">Built by Squire Builds</a></span>
     <span><a href="/releases">Release log</a></span>
     <span><a href="https://squirebuilds.com/gamesquire/">Board game guides</a></span>
-    <span><a href="/security">Security</a></span>
     <span><a href="https://x.com/SquireBuilds" target="_blank" rel="noopener">Follow on X</a></span>
     <span>&copy; 2026 Squire Builds. All rights reserved.</span>
   </div>
