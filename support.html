@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Privacy Policy | GameSquire</title>
+<title>Support GameSquire</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="How GameSquire (Squire Builds) collects, uses, and protects your data." />
-<link rel="canonical" href="https://gamesquire.app/privacy">
+<meta name="description" content="GameSquire is free, has no ads and is built by one person in Belgium. Leave an optional tip to support it." />
+<link rel="canonical" href="https://gamesquire.app/support">
 <meta name="robots" content="noindex">
 
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADyUlEQVR4AexXTUhUURj9emKUP0WGpRS0kCILBktyEbSqaII27fpP926ijYskw40YgYm7ILMIlYigBMeMRAqMCVsVyqiRUSOUGTozUo79vPP0Pu68d8e57290YILTvfe7373vnPuduc+nHN5X8i+ToVCG/8sKWO0CZiuQrYDDE3DFQttLSojBV1FBDMf9J4nH+cvVBCDmkLe+3LGA5pYW6ujq1tHccpsYrtbVEY+LNTUEIOaWCCkBRYV5dOJgOdWeOkL1Z/xaH0cAIr6KA+haxoXqan1N1d4NVH9pi4azxwqobEeuPpeqk1SAkbS/spzKSosJcfQhyGeTPEjBcj7VbiAL0kWbcgiAmNrTm3UxGCMHa0RIEAByIMZOGkRBWrSwas8uzfeiOSuxc0cLhOlMDMTxgoxiFEYa1gD8yyct3JULYh03tNWt3J2rnbrMYiaIF4N1CiPtBiFsaAUbcxespOu5TAyqk2AhPUOy8zsyK5kpTttZ+F08IRndWphDimSuME1R1gnjskG7FeD3dySA38hqf/bTgNUlpvwfkT/OKmDa0UIgNv3BQrY4deLLIikTU/Z9uBCdE+8sEZ3/9l4ia+WU4OgvUsbC0ytneTAL+8Tn7R8cKIE8WuXt2CTatMIt+4C0MhOZJzkbId0duGGf8fDSO0S7hezaaDFm7zfg1D44xpm5v2iWbqHxqfT9DuB/7ckO/mP+xxZaBWAhAAGv4ab/wVUTgI4dG9m5Rt3wv6kCEJAOG8E+Tv3PkwdvvQI/ozGMPYXb9gFZXQCu02DI23eCG/Zh1yfIA7oADIKhz2ikEY9FpHOR6NQ+2INdn+gDCQK8tBH8jwc6gdH/2CtBAGzk1XXqhf9NAhDoHR5FI4XFmPwXmRv+T1kBsLZio4Wo/G9gff42bG8bIvLYLMFCCHhpI+xvF/h4Ea01CUCSrI3i6h9z4aF+LEmJ0kO1lF+8P2VesgTj9cnyhAKs2Cj8cYyGAj30ZnCA+gO9Gh60t5MRra136dFQHg1M+uh1qIiSWYIR49uJr3EyXp9sXigANuocHGY5phbzgeERaut5RdfudNONppvUcL2BbjU1aXjYcY+MYOKePntJj5+HqPNFlBrvz1Dbk1kKBNVvEpWk6UHLgV51frlraoQCkDWufisHuTczT7qxK0B970YcfwjhVHG6fSpBCIEgCOOrgzFywEmEpAJAGFXAKYMw4AZpEQkWgyCQB+krbdMEYMzmRW1SASwZLzaIYeO11qYUsNYIG/l4I8D4FA/HWQEeHq7U1tkKSB2Th0kZX4H/AAAA//9LR/V5AAAABklEQVQDAPO1/YCtjvIMAAAAAElFTkSuQmCC" />
@@ -160,6 +160,58 @@
     color: var(--banner-text-faint);
   }
   .footer-meta a { text-decoration: underline; text-underline-offset: 2px; }
+
+  .lede { color: var(--ink-secondary); font-size: 1.05rem; line-height: 1.65; margin: 0 0 12px; max-width: 60ch; }
+  .fine { color: var(--ink-tertiary); font-size: 0.85rem; margin: 20px 0 0; }
+  .fine a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+
+  .tiles { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .tile {
+    display: grid; grid-template-columns: 64px 1fr; gap: 10px; align-items: center;
+    text-decoration: none; color: inherit;
+    background: var(--surface); border: 1.5px solid var(--border); border-radius: 14px;
+    padding: 10px 14px 10px 8px;
+    transition: border-color .15s, transform .15s;
+  }
+  .tile:hover { border-color: var(--gold); }
+  .tile:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .tile .name { display: block; font-family: 'Domine', serif; font-weight: 700; font-size: 0.98rem; line-height: 1.3; }
+  .tile .price { display: block; color: var(--ink-tertiary); font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+
+  /* Card art, drawn from the three card faces in the logo */
+  .art { position: relative; width: 64px; height: 56px; }
+  .c { position: absolute; width: 24px; height: 34px; border-radius: 5px; box-shadow: inset 0 0 0 1.5px rgba(36,26,16,.2), 0 1px 2px rgba(36,26,16,.25); }
+  .rust  { background: linear-gradient(160deg, #d29b74, #a35f3c); }
+  .cream { background: linear-gradient(160deg, #faf3e4, #e3d0a1); }
+  .goldc { background: linear-gradient(160deg, #e6b355, #b8841f); }
+  .t1 .a { left: 20px; top: 11px; transform: rotate(-4deg); }
+  .t2 .a { left: 11px; top: 12px; transform: rotate(-12deg); }
+  .t2 .b { left: 27px; top: 10px; transform: rotate(8deg); }
+  .t3 .a { left: 6px;  top: 13px; transform: rotate(-18deg); }
+  .t3 .b { left: 20px; top: 9px;  transform: rotate(-2deg); }
+  .t3 .d { left: 34px; top: 13px; transform: rotate(16deg); }
+  .t4 .c { top: 12px; left: 20px; transform-origin: 50% 110%; width: 22px; height: 32px; }
+  .t4 .f1 { transform: rotate(-42deg); } .t4 .f2 { transform: rotate(-28deg); }
+  .t4 .f3 { transform: rotate(-14deg); } .t4 .f4 { transform: rotate(0deg); }
+  .t4 .f5 { transform: rotate(14deg); }  .t4 .f6 { transform: rotate(28deg); }
+  .t4 .f7 { transform: rotate(42deg); }
+  .t5 .c { width: 17px; height: 24px; border-radius: 4px; }
+  .t5 .k1 { left: 0px;  top: 4px;  transform: rotate(-38deg); }
+  .t5 .k2 { left: 14px; top: -5px; transform: rotate(22deg); }
+  .t5 .k3 { left: 32px; top: -7px; transform: rotate(-12deg); }
+  .t5 .k4 { left: 45px; top: 3px;  transform: rotate(40deg); }
+  .t5 .k5 { left: 3px;  top: 30px; transform: rotate(18deg); }
+  .t5 .k6 { left: 22px; top: 16px; transform: rotate(-6deg); z-index: 2; width: 20px; height: 28px; }
+  .t5 .k7 { left: 38px; top: 31px; transform: rotate(-30deg); }
+  .t5 .k8 { left: 46px; top: 22px; transform: rotate(66deg); }
+  .spark { position: absolute; width: 5px; height: 5px; background: #e6b355; transform: rotate(45deg); border-radius: 1px; }
+  .t5 .p1 { left: 10px; top: 22px; } .t5 .p2 { left: 58px; top: 0px; width: 4px; height: 4px; }
+  .t5 .p3 { left: 30px; top: 50px; width: 4px; height: 4px; }
+  .t6 .a { left: 20px; top: 11px; width: 24px; height: 34px; border-radius: 5px; border: 1.5px dashed var(--gold); }
+  .t6 .a::before, .t6 .a::after { content: ""; position: absolute; background: var(--gold); border-radius: 1px; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .t6 .a::before { width: 12px; height: 2.5px; }
+  .t6 .a::after { width: 2.5px; height: 12px; }
+  @media (prefers-reduced-motion: reduce) { .tile { transition: none; } }
 </style>
 <script src="/assets/analytics.js" defer></script>
 </head>
@@ -174,40 +226,40 @@
 
 <main>
   <div class="wrap">
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: September 2026</p>
+    <h1>Support GameSquire</h1>
+    <p class="updated">Optional, and always will be</p>
 
-    <div class="prose">
-      <h2>1. Who we are</h2>
-      <p>GameSquire is made by Squire Builds, a sole proprietorship operated by Vincent Demeulenaere, based in Belgium. We're the data controller for the information described below. Contact us at <a href="mailto:support@squirebuilds.com">support@squirebuilds.com</a> with any question or request.</p>
+    <p class="lede">GameSquire is free and has no ads. It is built and run by one person in Belgium.</p>
+    <p class="lede">If it has earned a place at your table, you can leave a tip. A tip is a voluntary one-off payment. It does not unlock anything, and nothing in GameSquire is held back from people who do not tip.</p>
 
-      <h2>2. What we collect</h2>
-      <p>If you sign up on this site for news of GameSquire 1.0: your email address. If you use the GameSquire app: your email address and password (handled by our authentication provider, we never see your password in plain text), profile info (display name, username, and avatar you choose), and your data (the games you add to your shelf or wishlist, the plays you log (date, duration, notes, who played), and your friend connections). We don't collect location, contacts, or device identifiers beyond what's needed to keep you signed in.</p>
+    <ul class="tiles">
+      <li><a class="tile" href="https://buy.stripe.com/5kQaEZ2Xdgmh5EdcxB7Zu00" target="_blank" rel="noopener">
+        <span class="art t1" aria-hidden="true"><i class="c cream a"></i></span>
+        <span><span class="name">One card</span><span class="price">&euro;0.99</span></span>
+      </a></li>
+      <li><a class="tile" href="https://buy.stripe.com/7sYbJ31T9da59UtfJN7Zu01" target="_blank" rel="noopener">
+        <span class="art t2" aria-hidden="true"><i class="c rust a"></i><i class="c goldc b"></i></span>
+        <span><span class="name">A pair</span><span class="price">&euro;2.99</span></span>
+      </a></li>
+      <li><a class="tile" href="https://buy.stripe.com/7sY3cxdBR7PLd6FeFJ7Zu02" target="_blank" rel="noopener">
+        <span class="art t3" aria-hidden="true"><i class="c rust a"></i><i class="c cream b"></i><i class="c goldc d"></i></span>
+        <span><span class="name">Three-card spread</span><span class="price">&euro;4.99</span></span>
+      </a></li>
+      <li><a class="tile" href="https://buy.stripe.com/aFa5kF8hxfid7Ml0OT7Zu03" target="_blank" rel="noopener">
+        <span class="art t4" aria-hidden="true"><i class="c rust f1"></i><i class="c cream f2"></i><i class="c goldc f3"></i><i class="c cream f4"></i><i class="c rust f5"></i><i class="c cream f6"></i><i class="c goldc f7"></i></span>
+        <span><span class="name">Full deck</span><span class="price">&euro;9.99</span></span>
+      </a></li>
+      <li><a class="tile" href="https://buy.stripe.com/9B63cx69p8TP1nX0OT7Zu04" target="_blank" rel="noopener">
+        <span class="art t5" aria-hidden="true"><i class="c cream k1"></i><i class="c goldc k2"></i><i class="c rust k3"></i><i class="c cream k4"></i><i class="c rust k5"></i><i class="c goldc k6"></i><i class="c cream k7"></i><i class="c rust k8"></i><i class="spark p1"></i><i class="spark p2"></i><i class="spark p3"></i></span>
+        <span><span class="name">Collector's edition</span><span class="price">&euro;19.99</span></span>
+      </a></li>
+      <li><a class="tile" href="https://buy.stripe.com/eVq14pbtJ5HD2s14157Zu05" target="_blank" rel="noopener">
+        <span class="art t6" aria-hidden="true"><i class="a"></i></span>
+        <span><span class="name">Other amount</span><span class="price">You choose, from &euro;0.99</span></span>
+      </a></li>
+    </ul>
 
-      <h2>3. Why we collect it</h2>
-      <p>To run the app: showing your collection back to you, letting friends see what you own and what plays you've logged with them, and keeping your account secure. If you signed up on this site, also to tell you when GameSquire 1.0 launches. We also use your email address for account emails you cannot opt out of, such as confirming your address or resetting your password, and occasionally to tell you about GameSquire itself: a new release, a significant new feature, or the move out of beta and what Premium costs. You can unsubscribe from those updates at any time with the link in each one, and doing so never affects your account. We also use privacy-focused product analytics (cookieless on this website, tied to your account inside the app) to see which pages and features people actually use (for example, adding a game, logging a play, or sending a friend request), so we can improve GameSquire. Inside the app, these events are tied to your account, not to any advertising profile. Inside the mobile app, this can include session recordings of your on-screen activity, used only to find and fix bugs; password fields are automatically hidden in these recordings. We don't sell your data or use it for advertising. GameSquire has no ads and no ad tracking of any kind.</p>
-
-      <h2>4. Who can see what</h2>
-      <p>Inside the app, your profile (display name, username, avatar) is visible to other signed-in users so they can find and add you as a friend. Your shelf, wishlist, and play log are visible only to accepted friends, in the ways the app is designed to show them (e.g. "games you both own"). Notes you write on a play are visible to anyone who can see that play. The email address you leave for 1.0 launch news is never shown to anyone else.</p>
-
-      <h2>5. Where it's stored</h2>
-      <p>We use Supabase, a third-party infrastructure provider, to host the app's database and handle authentication, and PostHog (hosted in the EU) to record the product-analytics events and session recordings described in section 3. If we add optional AI-powered features (like a rulebook assistant) in the future, questions you ask would be sent to Anthropic's Claude API to generate an answer, and we'll update this policy before that ships. If we add paid subscriptions, billing is handled by Apple or Google directly; we don't see or store your payment details. Purchases in the mobile apps would also be processed through RevenueCat, which keeps a record of each purchase linked to your account, and tips paid on the web would be processed by Stripe, which handles your payment details on its own checkout page. If you sign up on this site for 1.0 launch news, the form sends only your email address to Formspree, which receives the signup on our behalf.</p>
-
-      <h2>6. How long we keep it</h2>
-      <p>We keep your data for as long as your account is active, or until you unsubscribe from 1.0 launch news. You can delete your app account at any time from Profile → Delete account, which permanently removes your profile, collection, play logs, and friend connections.</p>
-
-      <h2>7. Your rights</h2>
-      <p>Under EU/Belgian data protection law (GDPR), you can request access to, correction of, or a copy of your data, and can request deletion at any time (see above, or email us). If you believe we've mishandled your data, you can lodge a complaint with the Belgian Data Protection Authority (gegevensbeschermingsautoriteit.be).</p>
-
-      <h2>8. Children</h2>
-      <p>GameSquire isn't directed at children under 16. If you believe a child has created an account or signed up for 1.0 launch news without appropriate consent, contact us and we'll remove it.</p>
-
-      <h2>9. Changes</h2>
-      <p>We may update this policy as the app changes. Material changes will be reflected here with an updated date.</p>
-
-      <h2>10. Contact</h2>
-      <p>Squire Builds: <a href="mailto:support@squirebuilds.com">support@squirebuilds.com</a></p>
-    </div>
+    <p class="fine">Each option opens a secure Stripe checkout in a new tab. Stripe handles your payment details; we never see them. See the <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>.</p>
   </div>
 </main>
 

@@ -15,7 +15,7 @@ posthog.init('phc_mfD2teKjbBUVgLeGFnXqNF4cNJecNcyhpLp5b6iLtdji', {
 document.addEventListener('click', function (e) {
   var link = e.target.closest('a[href]');
   if (!link) return;
-  if (/^https?:\/\/(www\.)?(weeksquire\.com|gamesquire\.app|beta\.gamesquire\.app|apps\.apple\.com|testflight\.apple\.com|play\.google\.com)/.test(link.href)) {
+  if (/^https?:\/\/(www\.)?(weeksquire\.com|gamesquire\.app|beta\.gamesquire\.app|apps\.apple\.com|testflight\.apple\.com|play\.google\.com|buy\.stripe\.com)/.test(link.href)) {
     posthog.capture('outbound_app_click', { href: link.href, link_text: link.textContent.trim() });
   }
 });
