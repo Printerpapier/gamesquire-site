@@ -195,21 +195,22 @@
   .t4 .f3 { transform: rotate(-14deg); } .t4 .f4 { transform: rotate(0deg); }
   .t4 .f5 { transform: rotate(14deg); }  .t4 .f6 { transform: rotate(28deg); }
   .t4 .f7 { transform: rotate(42deg); }
-  /* The rotated cards span x -5.6 to 68.9 and y -8.5 to 57.6, past the 64x56 box and into the
-     label, so the scatter is scaled by 0.8 about that bounding box's centre and re-centred. */
-  .t5 .scatter { position: absolute; left: 0; top: 0; width: 64px; height: 56px; transform-origin: 0 0; transform: translate(32px, 28px) scale(.8) translate(-31.67px, -24.57px); }
-  .t5 .c { width: 17px; height: 24px; border-radius: 4px; }
-  .t5 .k1 { left: 0px;  top: 4px;  transform: rotate(-38deg); }
-  .t5 .k2 { left: 14px; top: -5px; transform: rotate(22deg); }
-  .t5 .k3 { left: 32px; top: -7px; transform: rotate(-12deg); }
-  .t5 .k4 { left: 45px; top: 3px;  transform: rotate(40deg); }
-  .t5 .k5 { left: 3px;  top: 30px; transform: rotate(18deg); }
-  .t5 .k6 { left: 22px; top: 16px; transform: rotate(-6deg); z-index: 2; width: 20px; height: 28px; }
-  .t5 .k7 { left: 38px; top: 31px; transform: rotate(-30deg); }
-  .t5 .k8 { left: 46px; top: 22px; transform: rotate(66deg); }
-  .spark { position: absolute; width: 5px; height: 5px; background: #e6b355; transform: rotate(45deg); border-radius: 1px; }
-  .t5 .p1 { left: 10px; top: 22px; } .t5 .p2 { left: 58px; top: 0px; width: 4px; height: 4px; }
-  .t5 .p3 { left: 30px; top: 50px; width: 4px; height: 4px; }
+  /* Eight flying cards packed into x 2-44 and y 2-54, so the drawing ends where Other amount's
+     does and both tiles leave the same gap before their label. Same numbers as the web app's
+     support-gamesquire.web.tsx; keep the two in step. */
+  .t5 .scatter { position: absolute; inset: 0; }
+  .t5 .c { width: 11.9px; height: 16.8px; border-radius: 3px; }
+  .t5 .k1 { left: 6.2px;  top: 12.4px; transform: rotate(-38deg); }
+  .t5 .k2 { left: 12.7px; top: 4.8px;  transform: rotate(22deg); }
+  .t5 .k3 { left: 21.2px; top: 3.2px;  transform: rotate(-12deg); }
+  .t5 .k4 { left: 27.3px; top: 11.6px; transform: rotate(40deg); }
+  .t5 .k5 { left: 7.6px;  top: 34.2px; transform: rotate(18deg); }
+  .t5 .k6 { left: 16.2px; top: 22.8px; transform: rotate(-6deg); z-index: 2; width: 14px; height: 19.6px; }
+  .t5 .k7 { left: 24px;   top: 35.1px; transform: rotate(-30deg); }
+  .t5 .k8 { left: 27.8px; top: 27.5px; transform: rotate(66deg); }
+  .spark { position: absolute; width: 4px; height: 4px; background: #e6b355; transform: rotate(45deg); border-radius: 1px; }
+  .t5 .p1 { left: 12px; top: 25.9px; } .t5 .p2 { left: 34.7px; top: 7.4px; width: 3.2px; height: 3.2px; }
+  .t5 .p3 { left: 21.6px; top: 49.4px; width: 3.2px; height: 3.2px; }
   .t6 .a { position: absolute; display: block; left: 20px; top: 11px; width: 24px; height: 34px; border-radius: 5px; border: 1.5px dashed var(--gold); }
   .t6 .a::before, .t6 .a::after { content: ""; position: absolute; background: var(--gold); border-radius: 1px; left: 50%; top: 50%; transform: translate(-50%, -50%); }
   .t6 .a::before { width: 12px; height: 2.5px; }
