@@ -195,6 +195,9 @@
   .t4 .f3 { transform: rotate(-14deg); } .t4 .f4 { transform: rotate(0deg); }
   .t4 .f5 { transform: rotate(14deg); }  .t4 .f6 { transform: rotate(28deg); }
   .t4 .f7 { transform: rotate(42deg); }
+  /* The rotated cards span x -5.6 to 68.9 and y -8.5 to 57.6, past the 64x56 box and into the
+     label, so the scatter is scaled by 0.8 about that bounding box's centre and re-centred. */
+  .t5 .scatter { position: absolute; left: 0; top: 0; width: 64px; height: 56px; transform-origin: 0 0; transform: translate(32px, 28px) scale(.8) translate(-31.67px, -24.57px); }
   .t5 .c { width: 17px; height: 24px; border-radius: 4px; }
   .t5 .k1 { left: 0px;  top: 4px;  transform: rotate(-38deg); }
   .t5 .k2 { left: 14px; top: -5px; transform: rotate(22deg); }
@@ -230,7 +233,7 @@
     <p class="updated">Tips are optional</p>
 
     <p class="lede">GameSquire is free and has no ads. It is built and run by one person in Belgium.</p>
-    <p class="lede">If it has earned a place at your table, you can leave a tip. A tip is a voluntary one-off payment. It does not unlock anything, and nothing in GameSquire is held back from people who do not tip.</p>
+    <p class="lede">If it has earned a place at your table, you can leave a tip. A tip is a voluntary one-off payment. It does not unlock anything and nothing in GameSquire is held back from people who do not tip.</p>
 
     <ul class="tiles">
       <li><a class="tile" href="https://buy.stripe.com/5kQaEZ2Xdgmh5EdcxB7Zu00" target="_blank" rel="noopener">
@@ -250,7 +253,7 @@
         <span><span class="name">Full deck</span><span class="price">&euro;9.99</span></span>
       </a></li>
       <li><a class="tile" href="https://buy.stripe.com/9B63cx69p8TP1nX0OT7Zu04" target="_blank" rel="noopener">
-        <span class="art t5" aria-hidden="true"><i class="c cream k1"></i><i class="c goldc k2"></i><i class="c rust k3"></i><i class="c cream k4"></i><i class="c rust k5"></i><i class="c goldc k6"></i><i class="c cream k7"></i><i class="c rust k8"></i><i class="spark p1"></i><i class="spark p2"></i><i class="spark p3"></i></span>
+        <span class="art t5" aria-hidden="true"><span class="scatter"><i class="c cream k1"></i><i class="c goldc k2"></i><i class="c rust k3"></i><i class="c cream k4"></i><i class="c rust k5"></i><i class="c goldc k6"></i><i class="c cream k7"></i><i class="c rust k8"></i><i class="spark p1"></i><i class="spark p2"></i><i class="spark p3"></i></span></span>
         <span><span class="name">Collector's edition</span><span class="price">&euro;19.99</span></span>
       </a></li>
       <li><a class="tile" href="https://buy.stripe.com/eVq14pbtJ5HD2s14157Zu05" target="_blank" rel="noopener">
