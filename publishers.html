@@ -147,11 +147,23 @@
   .prose a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
 
   .actions { margin: 14px 0 6px; }
-  .btn { display: inline-block; padding: 10px 18px; border-radius: 10px; background: var(--gold); color: var(--on-gold); font-weight: 600; text-decoration: none; }
-  .btn:hover { filter: brightness(1.05); }
+  .prose a.btn, .btn { display: inline-block; padding: 10px 18px; border-radius: 10px; background: var(--gold); color: var(--on-gold); font: inherit; font-weight: 600; text-decoration: none; border: 1px solid var(--gold); cursor: pointer; }
+  .prose a.btn:hover, .btn:hover { filter: brightness(1.05); }
   .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-  .btn-quiet { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+  .btn:disabled { opacity: 0.6; cursor: default; }
+  .prose a.btn-quiet { background: transparent; color: var(--ink); border: 1px solid var(--border); }
   .prose p + p { margin-top: 10px; }
+  .pub-form { display: grid; gap: 6px; margin-top: 12px; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+  .pub-form label { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-top: 8px; }
+  .pub-form input, .pub-form select, .pub-form textarea { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px; width: 100%; }
+  .pub-form input:focus, .pub-form select:focus, .pub-form textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .pub-form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .pub-form .row2 { grid-template-columns: 1fr; } }
+  .pub-form .btn { justify-self: start; margin-top: 14px; }
+  .pub-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .pf-status { min-height: 1.4em; margin: 6px 0 0; font-size: 0.95rem; }
+  .pf-status.ok { color: var(--ink); font-weight: 600; }
+  .pf-status.err { color: #c0533a; font-weight: 600; }
 
   footer {
     background: var(--banner-bg);
@@ -192,20 +204,56 @@
       <p>Players never download our copy. When a player taps "View rulebook", GameSquire opens your own file from your own website. If that link no longer works, we point the player to your website instead.</p>
       <p>We only use rulebooks that you offer for free. We respect licences that rule out commercial use. We never use fan translations, scans shared by third parties or files from rulebook archive sites.</p>
 
-      <h2>Ask us to remove your rulebooks</h2>
-      <p>If you do not want the rules assistant to use your rulebooks, tell us which games and we will stop using them, usually within two working days. Removing them does not affect anything else about your games in GameSquire.</p>
-      <div class="actions"><a class="btn" href="mailto:support@squirebuilds.com?subject=Rulebook%20removal%20request&amp;body=Publisher%3A%20%0AGames%3A%20%0AYour%20name%20and%20role%3A%20">Request removal</a></div>
-
       <h2>Add or update your rulebooks</h2>
       <p>Send us a link to the current English rulebook, a new edition or a correction. We will add it. We are happy to use the version you prefer players to read.</p>
-      <div class="actions"><a class="btn btn-quiet" href="mailto:support@squirebuilds.com?subject=Rulebook%20update&amp;body=Publisher%3A%20%0AGames%3A%20%0ALink%20to%20the%20rulebook%3A%20">Send a rulebook</a></div>
+      <div class="actions"><a class="btn btn-quiet" href="#request" data-type="inclusion">Send a rulebook</a></div>
 
       <h2>Let players read your rulebook inside GameSquire</h2>
       <p>By default GameSquire only shows your rulebook by opening it from your own website. If you would like players to read it directly in the app, even when your link changes, you can give us permission to show our copy. You can withdraw that permission at any time.</p>
-      <div class="actions"><a class="btn btn-quiet" href="mailto:support@squirebuilds.com?subject=Rulebook%20display%20permission&amp;body=Publisher%3A%20%0AGames%20(or%20all)%3A%20%0AYour%20name%20and%20role%3A%20">Give permission</a></div>
+      <div class="actions"><a class="btn btn-quiet" href="#request" data-type="permission">Give permission</a></div>
+
+      <h2>Ask us to remove your rulebooks</h2>
+      <p>If you do not want the rules assistant to use your rulebooks, tell us which games and we will stop using them, usually within two working days. Removing them does not affect anything else about your games in GameSquire.</p>
+      <div class="actions"><a class="btn btn-quiet" href="#request" data-type="takedown">Request removal</a></div>
+
+      <h2 id="request">Send us a request</h2>
+      <form id="publisher-form" class="pub-form" novalidate>
+        <label for="pf-type">What is your request about?</label>
+        <select id="pf-type" name="type" required>
+          <option value="inclusion">Add or update rulebooks</option>
+          <option value="permission">Permission to show rulebooks in the app</option>
+          <option value="takedown">Remove rulebooks</option>
+          <option value="other">Something else</option>
+        </select>
+
+        <label for="pf-publisher">Publisher</label>
+        <input id="pf-publisher" name="publisher" type="text" maxlength="200" required autocomplete="organization">
+
+        <div class="row2">
+          <div>
+            <label for="pf-name">Your name and role</label>
+            <input id="pf-name" name="name" type="text" maxlength="200" autocomplete="name">
+          </div>
+          <div>
+            <label for="pf-email">Email</label>
+            <input id="pf-email" name="email" type="email" maxlength="254" required autocomplete="email">
+          </div>
+        </div>
+
+        <label for="pf-games">Games (or "all")</label>
+        <input id="pf-games" name="games" type="text" maxlength="1000">
+
+        <label for="pf-message">Message, links to rulebooks, anything we should know</label>
+        <textarea id="pf-message" name="message" rows="5" maxlength="4000"></textarea>
+
+        <div class="hp" aria-hidden="true"><label for="pf-website">Website</label><input id="pf-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+
+        <button id="pf-submit" class="btn" type="submit">Send request</button>
+        <p id="pf-status" class="pf-status" role="status" aria-live="polite"></p>
+      </form>
 
       <h2>Contact</h2>
-      <p>Squire Builds, Belgium: <a href="mailto:support@squirebuilds.com">support@squirebuilds.com</a>. Please include the publisher name and the games your request is about.</p>
+      <p>Prefer email? Write to Squire Builds, Belgium: <a href="mailto:support@squirebuilds.com">support@squirebuilds.com</a>. Please include the publisher name and the games your request is about.</p>
     </div>
   </div>
 </main>
@@ -226,5 +274,6 @@
 </footer>
 
 <script src="/assets/site.js" defer></script>
+<script src="/assets/publishers.js" defer></script>
 </body>
 </html>
