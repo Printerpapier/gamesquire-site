@@ -191,21 +191,26 @@
       <p>Inside the app, your profile (display name, username, avatar) is visible to other signed-in users so they can find and add you as a friend. Your shelf, wishlist, and play log are visible only to accepted friends, in the ways the app is designed to show them (e.g. "games you both own"). Notes you write on a play are visible to anyone who can see that play. The email address you leave for 1.0 launch news is never shown to anyone else.</p>
 
       <h2>5. Where it's stored</h2>
-      <p>We use Supabase, a third-party infrastructure provider, to host the app's database and handle authentication, and PostHog (hosted in the EU) to record the product-analytics events and session recordings described in section 3. If we add optional AI-powered features (like a rulebook assistant) in the future, questions you ask would be sent to Anthropic's Claude API to generate an answer, and we'll update this policy before that ships. If we add paid subscriptions, billing is handled by Apple or Google directly; we don't see or store your payment details. Purchases in the mobile apps would also be processed through RevenueCat, which keeps a record of each purchase linked to your account, and tips paid on the web would be processed by Stripe, which handles your payment details on its own checkout page. If you sign up on this site for 1.0 launch news, the form sends only your email address to Formspree, which receives the signup on our behalf.</p>
+      <p>We use Supabase, a third-party infrastructure provider, to host the app's database and handle authentication, and PostHog (hosted in the EU) to record the product-analytics events and session recordings described in section 3. When the rules assistant is available (see section 6), the questions you ask and the rulebook it reads are sent to Anthropic's Claude API to generate an answer. If we add paid subscriptions, billing is handled by Apple or Google directly; we don't see or store your payment details. Purchases in the mobile apps would also be processed through RevenueCat, which keeps a record of each purchase linked to your account, and tips paid on the web would be processed by Stripe, which handles your payment details on its own checkout page. If you sign up on this site for 1.0 launch news, the form sends only your email address to Formspree, which receives the signup on our behalf.</p>
 
-      <h2>6. How long we keep it</h2>
+      <h2>6. Rulebooks and the rules assistant</h2>
+      <p>GameSquire keeps a library of rulebooks so its rules assistant can answer questions about a game. Most of them come from publishers' own websites. You can also upload a rulebook PDF yourself. Before you do you confirm that you have the right to share the file and that it is read by an AI to answer questions for other players of the game. We check that the file is a rulebook for that game and store it. We then use it to answer the questions of every player of that game. The file is sent to Anthropic's Claude API, our AI provider, only to check it and to answer questions.</p>
+      <p>Other players are never shown your name or your file. The app only tells them that a rulebook was uploaded by a player and has not been checked against the publisher. You can download the rulebooks you uploaded from the rulebook screen in the app. We record when you confirmed that you have the right to share a file, and that record is not shown to anyone else. The files of refused or replaced uploads are deleted 30 days after that decision. If you delete your account we delete your uploads that were not approved. Approved uploads stay in the shared library without your name attached, because other players rely on them. If a publisher asks us not to use their rulebook we switch the rules assistant off for that game.</p>
+      <p>The questions you ask the assistant and its answers are stored with your account so you can see your recent questions. They count towards your daily and monthly limit. If you use the report button on a rulebook we keep your report (the rulebook, the problem you chose, your message and your account) so we can review it, and we email it to ourselves. A report never removes anything by itself.</p>
+
+      <h2>7. How long we keep it</h2>
       <p>We keep your data for as long as your account is active, or until you unsubscribe from 1.0 launch news. You can delete your app account at any time from Profile → Delete account, which permanently removes your profile, collection, play logs, and friend connections.</p>
 
-      <h2>7. Your rights</h2>
+      <h2>8. Your rights</h2>
       <p>Under EU/Belgian data protection law (GDPR), you can request access to, correction of, or a copy of your data, and can request deletion at any time (see above, or email us). If you believe we've mishandled your data, you can lodge a complaint with the Belgian Data Protection Authority (gegevensbeschermingsautoriteit.be).</p>
 
-      <h2>8. Children</h2>
+      <h2>9. Children</h2>
       <p>GameSquire isn't directed at children under 16. If you believe a child has created an account or signed up for 1.0 launch news without appropriate consent, contact us and we'll remove it.</p>
 
-      <h2>9. Changes</h2>
+      <h2>10. Changes</h2>
       <p>We may update this policy as the app changes. Material changes will be reflected here with an updated date.</p>
 
-      <h2>10. Contact</h2>
+      <h2>11. Contact</h2>
       <p>Squire Builds: <a href="mailto:support@squirebuilds.com">support@squirebuilds.com</a></p>
     </div>
   </div>
