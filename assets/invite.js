@@ -25,7 +25,26 @@
   if (name) name.textContent = handle;
 
   var them = document.getElementById('invite-them');
-  if (them) them.textContent = handle;
+  if (them) them.textContent = handle + "'s";
+
+  // The same profile inside the web app, which is where someone who already uses GameSquire in a
+  // browser wants to be: it shows "Send friend request", or "already friends", for their account.
+  // The capture group is the app's username shape, so it is safe to put in a path unescaped, and
+  // encodeURIComponent is kept anyway as a second fence.
+  var webUrl = 'https://beta.gamesquire.app/u/' + encodeURIComponent(match[1]);
+  var web = document.getElementById('invite-web');
+  if (web) web.href = webUrl;
+
+  // Skip this page entirely for someone who already uses the web app (Vincent, 26 Sep 2026). The
+  // web app, signed in, sets gs_web_app=1 on .gamesquire.app and clears it on sign-out; this site
+  // cannot read the login itself (a different origin keeps its own storage), so this hint is all it
+  // has. It says "this browser uses the web app", not "is signed in right now": after an expired
+  // session the web app's own profile screen asks them to sign in, which is still the right place.
+  // location.replace, so Back returns to wherever the link was tapped, not to this page.
+  if (/(?:^|;\s*)gs_web_app=1(?:;|$)/.test(document.cookie)) {
+    window.location.replace(webUrl);
+    return;
+  }
 
   document.title = handle + ' invited you to GameSquire';
 })();
