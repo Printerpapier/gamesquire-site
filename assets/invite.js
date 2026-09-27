@@ -32,6 +32,13 @@
   // The capture group is the app's username shape, so it is safe to put in a path unescaped, and
   // encodeURIComponent is kept anyway as a second fence.
   var webUrl = 'https://beta.gamesquire.app/u/' + encodeURIComponent(match[1]);
+
+  // A QR code shown on the app's QR screen carries a short-lived token (?t=, 32 hex characters).
+  // Pass it on, so someone who scans it and lands in the web app becomes a friend at once, the same
+  // as in the phone app (Vincent, 27 Sep 2026). Only that exact shape is copied, never anything
+  // else from the query string. Without the app's matching release the web app just ignores it.
+  var token = /[?&]t=([0-9a-fA-F]{32})(?:&|$)/.exec(window.location.search);
+  if (token) webUrl += '?t=' + token[1].toLowerCase();
   var web = document.getElementById('invite-web');
   if (web) web.href = webUrl;
 
