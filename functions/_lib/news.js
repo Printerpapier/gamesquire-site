@@ -46,14 +46,16 @@ export async function readToken(secret, token) {
   let diff = 0;
   for (let i = 0; i < sig.length; i++) diff |= sig.charCodeAt(i) ^ expected.charCodeAt(i);
   if (diff !== 0) return null;
-  let parts;
+  let decoded;
   try {
-    parts = fromB64url(body).split('|');
+    decoded = fromB64url(body);
   } catch {
     return null;
   }
-  const email = parts[0];
-  const askedAt = Number(parts[1]);
+  // The LAST bar: an address may itself contain one.
+  const bar = decoded.lastIndexOf('|');
+  const email = decoded.slice(0, bar);
+  const askedAt = Number(decoded.slice(bar + 1));
   if (!email || !Number.isFinite(askedAt) || Date.now() - askedAt > LINK_DAYS * 86400000) return null;
   return { email, askedAt };
 }
