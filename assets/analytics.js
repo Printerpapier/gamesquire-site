@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (key.indexOf('utm_') === 0) utmParams.append(key, value);
   });
   if (!utmParams.toString()) return;
-  document.querySelectorAll('a[href^="https://beta.gamesquire.app"]').forEach(function (link) {
+  document.querySelectorAll('a[href^="https://my.gamesquire.app"]').forEach(function (link) {
     var url = new URL(link.href);
     utmParams.forEach(function (value, key) { url.searchParams.set(key, value); });
     link.href = url.toString();
