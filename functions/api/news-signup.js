@@ -57,7 +57,7 @@ export async function onRequestPost({ request, env }) {
     subject: 'Confirm: GameSquire news',
     text:
       'Someone, hopefully you, asked to hear GameSquire news at this address.\n\n' +
-      'Open this link and press the button to confirm. We will write a few times a year about new releases and what is new in ' +
+      'Open this link and press the button to confirm. We will write a few times a year, by email or app notification, about new releases and what is new in ' +
       `GameSquire. Never ads.\n\n${link}\n\n` +
       'The link works for 7 days. If you did not ask, ignore this email and you will not hear from us again.\n\n' +
       'Vincent, GameSquire',
