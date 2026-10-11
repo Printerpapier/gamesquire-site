@@ -38,7 +38,13 @@
   // as in the phone app (Vincent, 27 Sep 2026). Only that exact shape is copied, never anything
   // else from the query string. Without the app's matching release the web app just ignores it.
   var token = /[?&]t=([0-9a-fA-F]{32})(?:&|$)/.exec(window.location.search);
-  if (token) webUrl += '?t=' + token[1].toLowerCase();
+  // The share surface (?s=, e.g. profile_share) tells the app which button produced the link. The app
+  // validates it again against its own list; here only a short lowercase-and-underscore word is copied.
+  var surface = /[?&]s=([a-z_]{1,32})(?:&|$)/.exec(window.location.search);
+  var extra = [];
+  if (token) extra.push('t=' + token[1].toLowerCase());
+  if (surface) extra.push('s=' + surface[1]);
+  if (extra.length) webUrl += '?' + extra.join('&');
   var web = document.getElementById('invite-web');
   if (web) web.href = webUrl;
 
