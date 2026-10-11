@@ -5,14 +5,15 @@ function handleWaitlistSubmit(e) {
     e.preventDefault();
     var form = e.target;
     var toast = document.getElementById('waitlist-toast');
-    fetch('https://formspree.io/f/mwlkejeb', {
+    // The news list (double opt-in): this only sends a confirmation email. functions/api/news-signup.js.
+    fetch('/api/news-signup', {
       method: 'POST',
       headers: { 'Accept': 'application/json' },
       body: new FormData(form),
     })
       .then(function (response) {
         if (!response.ok) throw new Error('submit failed');
-        toast.textContent = "You're on the list, we'll email you at 1.0.";
+        toast.textContent = 'Almost there: check your inbox and tap the link to confirm.';
         toast.classList.add('show');
         form.reset();
         if (window.posthog) posthog.capture('waitlist_signup');
