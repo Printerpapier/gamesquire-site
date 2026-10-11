@@ -31,7 +31,7 @@
   // browser wants to be: it shows "Send friend request", or "already friends", for their account.
   // The capture group is the app's username shape, so it is safe to put in a path unescaped, and
   // encodeURIComponent is kept anyway as a second fence.
-  var webUrl = 'https://beta.gamesquire.app/u/' + encodeURIComponent(match[1]);
+  var webUrl = 'https://my.gamesquire.app/u/' + encodeURIComponent(match[1]);
 
   // A QR code shown on the app's QR screen carries a short-lived token (?t=, 32 hex characters).
   // Pass it on, so someone who scans it and lands in the web app becomes a friend at once, the same

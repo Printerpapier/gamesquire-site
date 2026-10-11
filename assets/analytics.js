@@ -15,7 +15,7 @@ posthog.init('phc_mfD2teKjbBUVgLeGFnXqNF4cNJecNcyhpLp5b6iLtdji', {
 document.addEventListener('click', function (e) {
   var link = e.target.closest('a[href]');
   if (!link) return;
-  if (/^https?:\/\/(www\.)?(weeksquire\.com|gamesquire\.app|beta\.gamesquire\.app|apps\.apple\.com|testflight\.apple\.com|play\.google\.com|buy\.stripe\.com)/.test(link.href)) {
+  if (/^https?:\/\/(www\.)?(weeksquire\.com|gamesquire\.app|my\.gamesquire\.app|beta\.gamesquire\.app|apps\.apple\.com|testflight\.apple\.com|play\.google\.com|buy\.stripe\.com)/.test(link.href)) {
     posthog.capture('outbound_app_click', { href: link.href, link_text: link.textContent.trim() });
   }
 });
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (key.indexOf('utm_') === 0) utmParams.append(key, value);
   });
   if (!utmParams.toString()) return;
-  document.querySelectorAll('a[href^="https://beta.gamesquire.app"]').forEach(function (link) {
+  document.querySelectorAll('a[href^="https://my.gamesquire.app"]').forEach(function (link) {
     var url = new URL(link.href);
     utmParams.forEach(function (value, key) { url.searchParams.set(key, value); });
     link.href = url.toString();
