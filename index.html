@@ -249,7 +249,8 @@
     flex-wrap: wrap;
   }
 
-  .hero-body { flex: 1 1 420px; max-width: 560px; }
+  .hero-body { flex: 1 1 420px; max-width: 620px; }
+  @media (min-width: 761px) { .hero .wrap { max-width: 1040px; } .hero-flex { gap: 40px; } .hero-visual { width: 340px; } }
 
   .hero-visual {
     flex: 0 0 auto;
@@ -401,12 +402,12 @@
   /* Store buttons: the hero's primary action now that the beta is public. */
   .store-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
     margin-bottom: 14px;
   }
-  .store-row .store-btn { padding: 0 10px; gap: 7px; font-size: 0.84rem; white-space: normal; text-align: center; line-height: 1.2; }
-  @media (max-width: 700px) { .store-row { grid-template-columns: 1fr; } .store-row .store-btn { font-size: 0.95rem; padding: 0 20px; } }
+  .store-row .store-btn { padding: 0 8px; gap: 6px; font-size: 0.94rem; white-space: nowrap; }
+  @media (max-width: 700px) { .store-row { display: grid; grid-template-columns: 1fr; } .store-row .store-btn { padding: 0 20px; } }
   .store-btn {
     display: inline-flex;
     align-items: center;
