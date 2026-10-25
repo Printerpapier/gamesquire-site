@@ -400,11 +400,13 @@
 
   /* Store buttons: the hero's primary action now that the beta is public. */
   .store-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
     margin-bottom: 14px;
   }
+  .store-row .store-btn { padding: 0 10px; gap: 7px; font-size: 0.84rem; white-space: normal; text-align: center; line-height: 1.2; }
+  @media (max-width: 700px) { .store-row { grid-template-columns: 1fr; } .store-row .store-btn { font-size: 0.95rem; padding: 0 20px; } }
   .store-btn {
     display: inline-flex;
     align-items: center;
@@ -451,7 +453,6 @@
 
   @media (max-width: 480px) {
     .hero-nav { flex-wrap: wrap; row-gap: 10px; }
-    .store-btn { flex: 1 1 100%; }
   }
 
   /* ---------- Content sections ---------- */
@@ -714,7 +715,7 @@
         </p>
 
         <div class="news-block" id="news">
-          <p class="news-lead">Want to hear what's new? Leave your email and we'll write a few times a year, by email or app notification, about new releases and what's new in GameSquire.</p>
+          <p class="news-lead">Want to hear what's new? Leave your email and I'll write a few times a year, by email or app notification, about new releases and what's new in GameSquire.</p>
           <form class="waitlist" name="waitlist" method="POST">
             <p class="hp"><label>Don't fill this out: <input name="_gotcha" /></label></p>
             <label class="hp" for="email">Email address</label>
@@ -722,7 +723,7 @@
             <button class="btn-gold" type="submit">Keep me posted</button>
           </form>
           <p class="toast" id="waitlist-toast">Almost there: check your inbox and tap the link to confirm.</p>
-          <p class="form-note">Never ads. We'll ask you to confirm first. Every email has an unsubscribe link, and if you have a GameSquire account the same choice is the News switch in the app.</p>
+          <p class="form-note">Never ads. I'll ask you to confirm first. Every email has an unsubscribe link, and if you have a GameSquire account the same choice is the News switch in the app.</p>
         </div>
       </div>
 
@@ -772,28 +773,47 @@
       <div class="feature-card">
         <h3 class="feature-title">Every play, remembered</h3>
         <p class="feature-body">
-          Scores for every player, co-op and solo outcomes, wishlist and every expansion for
-          what's on your shelf. Tag the friends who were at the table and it lands in their
-          history too. Stats then show your win rate, your record against each friend and a
-          shareable Year's Tally.
+          Log scores for every player or fill them in from a photo of the score sheet, plus co-op
+          and solo results, the expansions at the table and a timer that keeps running. Add where you
+          played and keep private notes on any game. Tag the friends who were there and the play lands in
+          their history too.
         </p>
       </div>
+
+      <div class="feature-card">
+        <h3 class="feature-title">See how you really play</h3>
+        <p class="feature-body">
+          Stats show your win rate, how much of your shelf you have played, your top games and your record
+          against each friend. Insights, Challenges and a shareable Year's Tally turn a year at the table
+          into something you can look back on. The Knight subscription opens the deeper Insights.
+        </p>
+      </div>
+
       <div class="feature-card">
         <h3 class="feature-title">Ask the Herald about the rules</h3>
         <p class="feature-body">
-          Stuck on a rule mid-game? The Herald, our rules assistant, reads the game's rulebook from
-          the GameSquire library. It answers with the page it found the rule on and tells you when
-          the rulebook does not cover it. Squire (Free) members get 5 questions a month. Knight
-          membership gives your household more, plus Learn to play guides that cover setup and turns,
-          ready for the most-owned games and on request for any other.
+          Stuck on a rule mid-game? The Herald, the rules assistant, reads the game's rulebook from the
+          GameSquire library, for the edition and expansions you play with. It answers with the page it found
+          the rule on and tells you when the rulebook does not cover it. Squire (the free plan) includes 5
+          questions a month. The Knight subscription gives your household more. No rulebook yet? Tap Find it for me.
         </p>
       </div>
+
+      <div class="feature-card">
+        <h3 class="feature-title">Learn to play, step by step</h3>
+        <p class="feature-body">
+          Guides to setting up and playing a game, written from its rulebook with page references.
+          They are ready for the most-owned games. With the Knight subscription you can ask for
+          any other game and usually get it within a day.
+        </p>
+      </div>
+
       <div class="feature-card">
         <h3 class="feature-title">Fill your shelf in minutes</h3>
         <p class="feature-body">
-          Bring your BoardGameGeek collection, ratings and plays over in one step. Scan a
-          barcode or photograph a box (even several at once) while GameSquire finds the
-          games for you. Your shelf exports to CSV for free, whenever you want.
+          Bring your BoardGameGeek collection, ratings and plays over in one step. Scan a barcode
+          for free, or photograph a box (even several at once) while GameSquire finds the games for you.
+          Your shelf exports to CSV for free whenever you want, so your data is never stuck.
         </p>
       </div>
     </div>
@@ -847,7 +867,7 @@
       </div>
       <div class="faq-item">
         <p class="faq-q">Is my data private?</p>
-        <p class="faq-a">If you leave your email for GameSquire news, it is only ever used to send you that: a few times a year, by email or app notification, and only after you confirm it. We won't sell it or hand it to anyone else. No ads means no ad trackers watching what you do in the app. And your collection is never stuck here: it's built on BoardGameGeek's own data. Your shelf and wishlist export to CSV for free, whenever you want. For how the app protects your account and data, see the <a href="/security">security page</a>.</p>
+        <p class="faq-a">If you leave your email for GameSquire news, it is only ever used to send you that: a few times a year, by email or app notification, and only after you confirm it. It is never sold or handed to anyone else. No ads means no ad trackers watching what you do in the app. And your collection is never stuck here: it's built on BoardGameGeek's own data. Your shelf and wishlist export to CSV for free, whenever you want. For how the app protects your account and data, see the <a href="/security">security page</a>.</p>
       </div>
     </div>
   </div>
