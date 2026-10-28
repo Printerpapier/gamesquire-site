@@ -12,3 +12,28 @@
 # domain, not locally: a local server has no such normalisation, so this cannot be caught
 # before deploying.
 /u/*    /invite    200
+
+# Short links handed out by MarketingOutreach drafts (28 Oct 2026). They look like plain pages
+# (gamesquire.app/reddit) but forward to the real destination with the tracking tag, so PostHog
+# and Google Play's acquisition report can tell which platform a visit came from. /<source>
+# goes to the web app, /<source>/android to Google Play with an install-referrer tag, and
+# /<source>/iphone to the App Store (Apple ignores plain tags). /hello is for email and DM pitches.
+# Exact paths only: a matching rule wins over a real file here, so never add a wildcard.
+/reddit    https://my.gamesquire.app/?utm_source=reddit&utm_medium=social&utm_campaign=marketing    302
+/reddit/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dreddit%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/reddit/iphone    https://apps.apple.com/app/id6804383196    302
+/bluesky    https://my.gamesquire.app/?utm_source=bluesky&utm_medium=social&utm_campaign=marketing    302
+/bluesky/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dbluesky%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/bluesky/iphone    https://apps.apple.com/app/id6804383196    302
+/x    https://my.gamesquire.app/?utm_source=x&utm_medium=social&utm_campaign=marketing    302
+/x/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dx%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/x/iphone    https://apps.apple.com/app/id6804383196    302
+/instagram    https://my.gamesquire.app/?utm_source=instagram&utm_medium=social&utm_campaign=marketing    302
+/instagram/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dinstagram%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/instagram/iphone    https://apps.apple.com/app/id6804383196    302
+/tiktok    https://my.gamesquire.app/?utm_source=tiktok&utm_medium=social&utm_campaign=marketing    302
+/tiktok/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dtiktok%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/tiktok/iphone    https://apps.apple.com/app/id6804383196    302
+/hello    https://my.gamesquire.app/?utm_source=press&utm_medium=email&utm_campaign=marketing    302
+/hello/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dpress%26utm_medium%3Demail%26utm_campaign%3Dmarketing    302
+/hello/iphone    https://apps.apple.com/app/id6804383196    302
