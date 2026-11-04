@@ -17,41 +17,61 @@
 # (gamesquire.app/reddit) but forward to the real destination with the tracking tag, so PostHog
 # and Google Play's acquisition report can tell which platform a visit came from. /<source>
 # goes to the web app, /<source>/android to Google Play with an install-referrer tag, and
-# /<source>/iphone to the App Store (Apple ignores plain tags). /hello is for email and DM pitches.
+# /<source>/iphone to the App Store with Apple's own campaign tag (pt= provider token, ct= source;
+# Apple ignores plain tags). /hello is for email and DM pitches. /bgg, /discord and /club are for posts
+# Vincent writes by hand.
 # Exact paths only: a matching rule wins over a real file here, so never add a wildcard.
 /reddit    https://my.gamesquire.app/?utm_source=reddit&utm_medium=social&utm_campaign=marketing    302
 /reddit/    https://my.gamesquire.app/?utm_source=reddit&utm_medium=social&utm_campaign=marketing    302
 /reddit/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dreddit%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
 /reddit/android/    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dreddit%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
-/reddit/iphone    https://apps.apple.com/app/id6804383196    302
-/reddit/iphone/    https://apps.apple.com/app/id6804383196    302
+/reddit/iphone    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=reddit&mt=8    302
+/reddit/iphone/    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=reddit&mt=8    302
 /bluesky    https://my.gamesquire.app/?utm_source=bluesky&utm_medium=social&utm_campaign=marketing    302
 /bluesky/    https://my.gamesquire.app/?utm_source=bluesky&utm_medium=social&utm_campaign=marketing    302
 /bluesky/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dbluesky%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
 /bluesky/android/    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dbluesky%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
-/bluesky/iphone    https://apps.apple.com/app/id6804383196    302
-/bluesky/iphone/    https://apps.apple.com/app/id6804383196    302
+/bluesky/iphone    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=bluesky&mt=8    302
+/bluesky/iphone/    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=bluesky&mt=8    302
 /x    https://my.gamesquire.app/?utm_source=x&utm_medium=social&utm_campaign=marketing    302
 /x/    https://my.gamesquire.app/?utm_source=x&utm_medium=social&utm_campaign=marketing    302
 /x/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dx%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
 /x/android/    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dx%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
-/x/iphone    https://apps.apple.com/app/id6804383196    302
-/x/iphone/    https://apps.apple.com/app/id6804383196    302
+/x/iphone    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=x&mt=8    302
+/x/iphone/    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=x&mt=8    302
 /instagram    https://my.gamesquire.app/?utm_source=instagram&utm_medium=social&utm_campaign=marketing    302
 /instagram/    https://my.gamesquire.app/?utm_source=instagram&utm_medium=social&utm_campaign=marketing    302
 /instagram/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dinstagram%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
 /instagram/android/    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dinstagram%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
-/instagram/iphone    https://apps.apple.com/app/id6804383196    302
-/instagram/iphone/    https://apps.apple.com/app/id6804383196    302
+/instagram/iphone    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=instagram&mt=8    302
+/instagram/iphone/    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=instagram&mt=8    302
 /tiktok    https://my.gamesquire.app/?utm_source=tiktok&utm_medium=social&utm_campaign=marketing    302
 /tiktok/    https://my.gamesquire.app/?utm_source=tiktok&utm_medium=social&utm_campaign=marketing    302
 /tiktok/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dtiktok%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
 /tiktok/android/    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dtiktok%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
-/tiktok/iphone    https://apps.apple.com/app/id6804383196    302
-/tiktok/iphone/    https://apps.apple.com/app/id6804383196    302
+/tiktok/iphone    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=tiktok&mt=8    302
+/tiktok/iphone/    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=tiktok&mt=8    302
 /hello    https://my.gamesquire.app/?utm_source=press&utm_medium=email&utm_campaign=marketing    302
 /hello/    https://my.gamesquire.app/?utm_source=press&utm_medium=email&utm_campaign=marketing    302
 /hello/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dpress%26utm_medium%3Demail%26utm_campaign%3Dmarketing    302
 /hello/android/    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dpress%26utm_medium%3Demail%26utm_campaign%3Dmarketing    302
-/hello/iphone    https://apps.apple.com/app/id6804383196    302
-/hello/iphone/    https://apps.apple.com/app/id6804383196    302
+/hello/iphone    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=press&mt=8    302
+/hello/iphone/    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=press&mt=8    302
+/bgg    https://my.gamesquire.app/?utm_source=bgg&utm_medium=social&utm_campaign=marketing    302
+/bgg/    https://my.gamesquire.app/?utm_source=bgg&utm_medium=social&utm_campaign=marketing    302
+/bgg/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dbgg%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/bgg/android/    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dbgg%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/bgg/iphone    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=bgg&mt=8    302
+/bgg/iphone/    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=bgg&mt=8    302
+/discord    https://my.gamesquire.app/?utm_source=discord&utm_medium=social&utm_campaign=marketing    302
+/discord/    https://my.gamesquire.app/?utm_source=discord&utm_medium=social&utm_campaign=marketing    302
+/discord/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Ddiscord%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/discord/android/    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Ddiscord%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/discord/iphone    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=discord&mt=8    302
+/discord/iphone/    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=discord&mt=8    302
+/club    https://my.gamesquire.app/?utm_source=club&utm_medium=social&utm_campaign=marketing    302
+/club/    https://my.gamesquire.app/?utm_source=club&utm_medium=social&utm_campaign=marketing    302
+/club/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dclub%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/club/android/    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dclub%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
+/club/iphone    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=club&mt=8    302
+/club/iphone/    https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=club&mt=8    302
