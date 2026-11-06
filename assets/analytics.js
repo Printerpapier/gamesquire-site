@@ -31,4 +31,31 @@ document.addEventListener('DOMContentLoaded', function () {
     utmParams.forEach(function (value, key) { url.searchParams.set(key, value); });
     link.href = url.toString();
   });
+
+  // Store buttons: pass the visit's source on. Google Play carries it in the install referrer
+  // (the app reads it after install); the App Store only counts it in App Store Connect (ct/pt).
+  // Values are limited to a-z0-9._- (the app's parser keeps only those). A link that already
+  // carries a referrer or ct is never overwritten.
+  var clean = function (v) {
+    v = String(v || '').toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 60);
+    return v;
+  };
+  var src = clean(utmParams.get('utm_source'));
+  if (!src) return;
+  var med = clean(utmParams.get('utm_medium'));
+  var camp = clean(utmParams.get('utm_campaign'));
+  var ref = 'utm_source=' + src + (med ? '&utm_medium=' + med : '') + (camp ? '&utm_campaign=' + camp : '');
+  document.querySelectorAll('a[href^="https://play.google.com/"]').forEach(function (link) {
+    var url = new URL(link.href);
+    if (url.searchParams.has('referrer')) return;
+    url.searchParams.set('referrer', ref);
+    link.href = url.toString();
+  });
+  document.querySelectorAll('a[href^="https://apps.apple.com/"]').forEach(function (link) {
+    var url = new URL(link.href);
+    if (url.searchParams.has('ct')) return;
+    url.searchParams.set('ct', src);
+    url.searchParams.set('pt', '129168901');
+    link.href = url.toString();
+  });
 });
