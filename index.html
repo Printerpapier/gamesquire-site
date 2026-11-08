@@ -250,9 +250,13 @@
   }
 
   .hero-body { flex: 1 1 420px; max-width: 560px; }
-  /* Wider hero than the rest of the page, so the text column (and its two store buttons) gets the same ~560px as the
-     guide pages; at 920px the column was ~456px and "Download on the App Store" touched the button's edges. */
-  .hero .wrap { max-width: 1040px; }
+  /* Room for the two store buttons side by side: at a 360px phone and 56px gap the text column was ~456px and
+     "Download on the App Store" touched its button's edges. A 320px phone and 40px gap give ~512px, keeping the hero
+     aligned with the rest of the page. */
+  @media (min-width: 900px) {
+    .hero-flex { gap: 40px; }
+    .hero-visual { width: 320px; }
+  }
 
   .hero-visual {
     flex: 0 0 auto;
