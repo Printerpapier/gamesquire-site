@@ -21,6 +21,19 @@
 # Apple ignores plain tags). /hello is for email and DM pitches. /bgg, /discord and /club are for posts
 # Vincent writes by hand.
 # Exact paths only: a matching rule wins over a real file here, so never add a wildcard.
+# /<source>/more is the "Want to know more?" link: the landing page itself, tagged (8 Nov 2026).
+/reddit/more    /?utm_source=reddit&utm_medium=social&utm_campaign=marketing    302
+/reddit/more/    /?utm_source=reddit&utm_medium=social&utm_campaign=marketing    302
+/bluesky/more    /?utm_source=bluesky&utm_medium=social&utm_campaign=marketing    302
+/bluesky/more/    /?utm_source=bluesky&utm_medium=social&utm_campaign=marketing    302
+/x/more    /?utm_source=x&utm_medium=social&utm_campaign=marketing    302
+/x/more/    /?utm_source=x&utm_medium=social&utm_campaign=marketing    302
+/instagram/more    /?utm_source=instagram&utm_medium=social&utm_campaign=marketing    302
+/instagram/more/    /?utm_source=instagram&utm_medium=social&utm_campaign=marketing    302
+/tiktok/more    /?utm_source=tiktok&utm_medium=social&utm_campaign=marketing    302
+/tiktok/more/    /?utm_source=tiktok&utm_medium=social&utm_campaign=marketing    302
+/hello/more    /?utm_source=press&utm_medium=email&utm_campaign=marketing    302
+/hello/more/    /?utm_source=press&utm_medium=email&utm_campaign=marketing    302
 /reddit    https://my.gamesquire.app/?utm_source=reddit&utm_medium=social&utm_campaign=marketing    302
 /reddit/    https://my.gamesquire.app/?utm_source=reddit&utm_medium=social&utm_campaign=marketing    302
 /reddit/android    https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3Dreddit%26utm_medium%3Dsocial%26utm_campaign%3Dmarketing    302
