@@ -46,6 +46,7 @@ function isShop(x) {
     typeof x.name === 'string' &&
     Array.isArray(x.regions) &&
     typeof x.url_template === 'string' &&
+    x.url_template.startsWith('https://') &&
     typeof x.tag === 'string'
   );
 }
