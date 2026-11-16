@@ -4,12 +4,15 @@
 // byte-identical to the old _redirects lines (scripts/compare-short-links.mjs checks it against production).
 //
 // A tap answers 302 at once and sends ONE event to PostHog in the background (context.waitUntil), so a slow or failing
-// PostHog can never delay or break the forward. No IP, no cookie, no person profile: a random id per tap, the country
+// PostHog can never delay or break the forward. No IP, no cookie, no person profile: a fixed id (short-link-taps), the country
 // Cloudflare already knows, the path, the source and where it forwards. Crawlers (link previews and search bots) are
 // recorded with is_bot true so charts can leave them out; whoever reads taps filters is_bot = false.
 
 // The PUBLIC project key (it also ships in every app build), the same one /store-check uses.
 const POSTHOG_URL = 'https://e.gamesquire.app/i/v0/e/';
+// One fixed id for every tap (no person profile), like the store check's, so a chart that counts unique people over all
+// events grows by one pseudo-person instead of one per tap.
+const DISTINCT_ID = 'short-link-taps';
 const POSTHOG_KEY = 'phc_mfD2teKjbBUVgLeGFnXqNF4cNJecNcyhpLp5b6iLtdji';
 
 // path source -> [utm_source, utm_medium]
@@ -73,11 +76,12 @@ export function shortLink(source, destination) {
         context.waitUntil(
           fetch(POSTHOG_URL, {
             method: 'POST',
+            signal: AbortSignal.timeout(3000), // a slow PostHog is dropped after 3 s; the redirect has long been sent
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               api_key: POSTHOG_KEY,
               event: 'short_link_tapped',
-              distinct_id: crypto.randomUUID(),
+              distinct_id: DISTINCT_ID,
               properties: {
                 source,
                 utm_source: utmSourceFor(source),

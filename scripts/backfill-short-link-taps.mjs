@@ -47,7 +47,7 @@ for (const r of rows) {
     events.push({
       event: 'short_link_tapped',
       uuid: uuidFrom(key),
-      distinct_id: uuidFrom(`id|${key}`),
+      distinct_id: 'short-link-taps',
       timestamp: at.toISOString(),
       properties: {
         source: r.source,
