@@ -64,12 +64,13 @@ export function isBot(userAgent) {
 
 /** The handler every short-link route file exports. */
 export function shortLink(source, destination) {
-  return async function onRequest({ request, waitUntil }) {
+  return async function onRequest(context) {
+    const { request } = context;
     // Only a real visit counts: a HEAD or OPTIONS probe forwards but is not a tap.
     if (request.method === 'GET') {
       try {
         const url = new URL(request.url);
-        waitUntil(
+        context.waitUntil(
           fetch(POSTHOG_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -91,9 +92,10 @@ export function shortLink(source, destination) {
                 $lib: 'gamesquire-short-link',
               },
             }),
-          }).catch(() => {}),
+          }).catch((e) => console.error('short link count failed', String(e))),
         );
-      } catch {
+      } catch (e) {
+        console.error('short link count failed', String(e));
         // never let counting break the forward
       }
     }
