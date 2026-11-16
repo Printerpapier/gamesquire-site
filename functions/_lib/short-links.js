@@ -49,7 +49,7 @@ export function utmSourceFor(source) {
   return SOURCES[source][0];
 }
 
-/** Bot unless it looks like a real browser: a missing or odd user agent counts as a bot, so a bad guess never inflates a
+/** Bot unless it looks like a real browser: a missing or odd user agent counts as a bot, so a bad guess leans to bot, so it rarely inflates a
  * count. scripts/backfill-short-link-taps.mjs imports this very function, so history and live taps are judged alike. */
 export function isBot(userAgent) {
   const ua = String(userAgent ?? '');
@@ -89,7 +89,8 @@ export function shortLink(source, destination) {
                 path: url.pathname,
                 host: url.hostname,
                 country: request.cf?.country ?? null,
-                is_bot: isBot(request.headers.get('user-agent')),
+                // A browser's own prefetch (the visitor has not looked at anything yet) is not a tap either.
+                is_bot: isBot(request.headers.get('user-agent')) || /prefetch/i.test(`${request.headers.get('sec-purpose')} ${request.headers.get('purpose')}`),
                 backfilled: false,
                 $process_person_profile: false,
                 $geoip_disable: true,

@@ -8,7 +8,7 @@
 //   --max-send <n>       brake, default 2000
 //
 // The CSV is Cloudflare's zone analytics (GraphQL httpRequestsAdaptiveGroups) for exact short-link paths that answered 302,
-// one row per day, source, destination, country and bot flag, bots decided by the SAME isBot() the live Function uses. It
+// one row per day, source, destination, country and bot flag, bots decided by a copy of the live Function's isBot() run on the user agent when the CSV was made (the user agents themselves are not kept); own setup tests (country BE, curl/node) removed. It
 // covers 28 Oct to 15 Nov 2026 (Cloudflare keeps 4 weeks and 2 days of this data). Adaptive analytics is SAMPLED on busy
 // days (interval 1 to 10), so the counts are estimates; a day's taps are spread evenly over the day, because the hour is
 // not kept. Re-running is safe: every event has a fixed uuid derived from its row, so PostHog drops duplicates.
