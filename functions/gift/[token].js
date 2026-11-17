@@ -63,11 +63,13 @@ function shopsForRegion(shops, region, language) {
   });
 }
 
-function buildShopUrl(shop, title) {
+function buildShopUrl(shop, title, category) {
   const once = encodeURIComponent(title);
+  // bol only: the search limited to one board-games category (N=<id>), nested inside the affiliate link's url= target.
+  const cat = category && /^\d{1,10}$/.test(category) && String(shop.id).startsWith('bol') ? '%26N%3D' + category : '';
   return shop.url_template
     .split('{query2}')
-    .join(encodeURIComponent(once))
+    .join(encodeURIComponent(once) + cat)
     .split('{query}')
     .join(once)
     .split('{tag}')
@@ -259,6 +261,10 @@ export async function onRequestGet({ request, params }) {
             if (product) {
               href = product;
               kind = 'product';
+            } else if (link.kind === 'category' && typeof link.category === 'string' && /^\d{1,10}$/.test(link.category)) {
+              // No confident product, but bol's board-games category has results for the name: search inside it.
+              href = buildShopUrl(s, gname, link.category);
+              kind = 'category';
             }
           }
           return `<a class="buy" href="${esc(href)}" target="_blank" rel="sponsored nofollow noopener noreferrer" data-shop="${esc(s.id)}" data-kind="${kind}" data-country="${esc(region ?? '')}" aria-label="Buy ${esc(gname)} at ${esc(s.name)}">Buy at ${esc(s.name)}</a>`;
