@@ -25,10 +25,22 @@ document.addEventListener('DOMContentLoaded', function () {
   new URLSearchParams(window.location.search).forEach(function (value, key) {
     if (key.indexOf('utm_') === 0) utmParams.append(key, value);
   });
+  // Remember the tag for the rest of the visit (17 Nov 2026): a tagged short link lands on one page, but the visitor
+  // often taps through to another page before the web-app button, which used to lose the source ("Website, reason
+  // unknown"). A fresh tag replaces an older one; a stored one expires after 30 minutes.
+  var KEY = 'gs_utm';
+  try {
+    if (utmParams.toString()) {
+      sessionStorage.setItem(KEY, JSON.stringify({ q: utmParams.toString(), t: Date.now() }));
+    } else {
+      var saved = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+      if (saved && saved.q && Date.now() - saved.t < 30 * 60 * 1000) utmParams = new URLSearchParams(saved.q);
+    }
+  } catch (e) {}
   if (!utmParams.toString()) return;
   document.querySelectorAll('a[href^="https://my.gamesquire.app"]').forEach(function (link) {
     var url = new URL(link.href);
-    utmParams.forEach(function (value, key) { url.searchParams.set(key, value); });
+    utmParams.forEach(function (value, key) { if (!url.searchParams.has(key)) url.searchParams.set(key, value); });
     link.href = url.toString();
   });
 
