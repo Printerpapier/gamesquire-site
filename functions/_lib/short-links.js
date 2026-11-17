@@ -26,7 +26,11 @@ const SOURCES = {
   bgg: ['bgg', 'social'],
   discord: ['discord', 'social'],
   club: ['club', 'social'],
+  tally: ['tally', 'share'],
 };
+
+// Sources whose campaign is not "marketing" (a Year's Tally card people share themselves, not a post of ours).
+const CAMPAIGNS = { tally: 'year_tally' };
 
 /** Sources that also have a /more link (the landing page itself, tagged). Not bgg, discord or club: those never had one. */
 export const MORE_SOURCES = ['reddit', 'bluesky', 'x', 'instagram', 'tiktok', 'hello'];
@@ -35,10 +39,10 @@ export const ALL_SOURCES = Object.keys(SOURCES);
 /** Where a short link forwards: destination is web, android, iphone or more. */
 export function targetFor(source, destination) {
   const [utm, medium] = SOURCES[source];
-  const tag = `utm_source=${utm}&utm_medium=${medium}&utm_campaign=marketing`;
+  const tag = `utm_source=${utm}&utm_medium=${medium}&utm_campaign=${CAMPAIGNS[source] ?? 'marketing'}`;
   if (destination === 'more') return `/?${tag}`;
   if (destination === 'android') {
-    return `https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3D${utm}%26utm_medium%3D${medium}%26utm_campaign%3Dmarketing`;
+    return `https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker&referrer=utm_source%3D${utm}%26utm_medium%3D${medium}%26utm_campaign%3D${CAMPAIGNS[source] ?? 'marketing'}`;
   }
   if (destination === 'iphone') return `https://apps.apple.com/app/apple-store/id6804383196?pt=129168901&ct=${utm}&mt=8`;
   return `https://my.gamesquire.app/?${tag}`;
