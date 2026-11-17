@@ -11,6 +11,7 @@ document.addEventListener('click', function (e) {
       distinct_id: 'system:gift-list',
       properties: {
         shop_id: a.getAttribute('data-shop'),
+        link_kind: a.getAttribute('data-kind') || 'search',
         country: a.getAttribute('data-country') || null,
         $process_person_profile: false,
         $current_url: 'https://gamesquire.app/gift/',

@@ -74,6 +74,22 @@ function buildShopUrl(shop, title) {
     .join(encodeURIComponent(shop.tag.trim()));
 }
 
+// A bol.com product page inside the shop's affiliate link: the template's own url= target is swapped for the product.
+// Only an https www.bol.com page is ever used.
+function productShopUrl(shop, productUrl) {
+  if (!/[?&]url=/.test(shop.url_template)) return null;
+  try {
+    const u = new URL(productUrl);
+    if (u.protocol !== 'https:' || u.hostname !== 'www.bol.com') return null;
+  } catch {
+    return null;
+  }
+  return shop.url_template
+    .replace(/([?&]url=)[^&]*/, (_m, p) => p + encodeURIComponent(productUrl))
+    .split('{tag}')
+    .join(encodeURIComponent(shop.tag.trim()));
+}
+
 // ---- Rendering --------------------------------------------------------------------------------------------------
 
 const STYLE = `
@@ -186,9 +202,17 @@ export async function onRequestGet({ request, params }) {
     return gonePage(404, 'This gift list is no longer shared', 'The person who sent you this link has stopped sharing it, or the link is not right.');
   }
 
+  const country = String(request.headers.get('cf-ipcountry') || '').toUpperCase();
+  const region = /^[A-Z]{2}$/.test(country) && country !== 'XX' && country !== 'T1' ? country : null;
+  const langMatch = /^\s*([A-Za-z]{2})/.exec(request.headers.get('accept-language') || '');
+  const language = langMatch ? langMatch[1].toLowerCase() : null;
+  // The bol.com product check (GameSquire repo docs/plans/bol-product-check.md): the Edge Function answers per game
+  // whether bol sells it and where its page is, for the visitor's country (BE or NL) and language (fr or nl).
+  const checkQuery = region === 'BE' || region === 'NL' ? `&c=${region}&l=${language === 'fr' ? 'fr' : 'nl'}` : '';
+
   let upstream;
   try {
-    upstream = await fetch(API + token, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(8000) });
+    upstream = await fetch(API + token + checkQuery, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(8000) });
   } catch {
     return gonePage(502, 'We could not load this list', 'Please try again in a minute.');
   }
@@ -207,10 +231,6 @@ export async function onRequestGet({ request, params }) {
   const games = Array.isArray(data.games) ? data.games : [];
   const possessive = /s$/i.test(name) ? `${name}’` : `${name}’s`;
 
-  const country = String(request.headers.get('cf-ipcountry') || '').toUpperCase();
-  const region = /^[A-Z]{2}$/.test(country) && country !== 'XX' && country !== 'T1' ? country : null;
-  const langMatch = /^\s*([A-Za-z]{2})/.exec(request.headers.get('accept-language') || '');
-  const language = langMatch ? langMatch[1].toLowerCase() : null;
   const wtb = data.where_to_buy && data.where_to_buy.public === true && Array.isArray(data.where_to_buy.shops) ? data.where_to_buy.shops : [];
   const shops = shopsForRegion(wtb, region, language);
 
@@ -226,11 +246,23 @@ export async function onRequestGet({ request, params }) {
           ? `<img class="pic" src="${esc(g.image)}" alt="" width="64" height="64" loading="lazy" decoding="async">`
           : `<div class="pic" aria-hidden="true"></div>`;
       const meta = gameMeta(g);
+      const links = data.shop_links && typeof data.shop_links === 'object' ? data.shop_links : {};
+      const link = Number.isSafeInteger(g.bgg_id) ? links[String(g.bgg_id)] : null;
       const buttons = shops
-        .map(
-          (s) =>
-            `<a class="buy" href="${esc(buildShopUrl(s, gname))}" target="_blank" rel="sponsored nofollow noopener noreferrer" data-shop="${esc(s.id)}" data-country="${esc(region ?? '')}" aria-label="Buy ${esc(gname)} at ${esc(s.name)}">Buy at ${esc(s.name)}</a>`,
-        )
+        .map((s) => {
+          let href = buildShopUrl(s, gname);
+          let kind = 'search';
+          if (String(s.id).startsWith('bol') && link) {
+            // bol does not sell this game: no button. A product page: the game's own link.
+            if (link.kind === 'none') return '';
+            const product = link.kind === 'product' && typeof link.url === 'string' ? productShopUrl(s, link.url) : null;
+            if (product) {
+              href = product;
+              kind = 'product';
+            }
+          }
+          return `<a class="buy" href="${esc(href)}" target="_blank" rel="sponsored nofollow noopener noreferrer" data-shop="${esc(s.id)}" data-kind="${kind}" data-country="${esc(region ?? '')}" aria-label="Buy ${esc(gname)} at ${esc(s.name)}">Buy at ${esc(s.name)}</a>`;
+        })
         .join('');
       return `<li class="card">${img}<div class="info"><h2 class="name">${esc(gname)}</h2>${meta ? `<p class="meta">${esc(meta)}</p>` : ''}${buttons ? `<div class="shops">${buttons}</div>` : ''}</div></li>`;
     })
