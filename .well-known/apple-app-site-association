@@ -8,6 +8,10 @@
           {
             "/": "/u/*",
             "comment": "Profile links. Opens GameSquire on the add-friend screen for that username; every other path on gamesquire.app stays in the browser."
+          },
+          {
+            "/": "/open/*",
+            "comment": "Email links that open a screen in the app (/open/tally?year=2026 is the Year's Tally). DEPLOY ONLY AFTER the 1.3.0 OTA is live: an older app has no /open route and would show a not-found screen."
           }
         ]
       }
