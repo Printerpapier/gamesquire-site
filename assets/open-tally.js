@@ -1,6 +1,6 @@
 /* Fills in the year on /open/tally (the address the December and January emails open).
  *
- * The page is the fallback for a phone without the app, a desktop, or an email client that does not hand the link to the
+ * The page is the fallback for a phone without the app, a desktop or an email client that does not hand the link to the
  * app. Two links need the year: "Open the app" (the app's own tabletracker:// scheme, which still works from a page on
  * gamesquire.app: on iPhone a link to the same website you are already on stays in the browser, a custom scheme does not)
  * and "Or open it on the web". The year is copied only when it is a whole number 2026 to 2100, and only that; the rest of
