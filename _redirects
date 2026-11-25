@@ -13,6 +13,11 @@
 # before deploying.
 /u/*    /invite    200
 
+# Email link that opens the Year's Tally in the app (docs/plans/tally-email-link in the GameSquire repo). On a phone with the app
+# the apple-app-site-association component hands /open/* to the app before this runs; this page is the fallback. Target is
+# open-tally (not open/tally.html) so Cloudflare's extensionless normalisation cannot strip the query, same trap as /u/ above.
+/open/tally    /open-tally    200
+
 # Short links (gamesquire.app/<source>, /<source>/android, /iphone, /more) are NOT here any more: since 16 Nov 2026
 # they are Pages Functions (functions/<source>/*.js, table in functions/_lib/short-links.js) that forward exactly as
 # these lines did and also count the tap in PostHog (board 240). Edit the table there, never add a rule here.
