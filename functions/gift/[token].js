@@ -16,6 +16,8 @@
 
 const API = 'https://kmuvpaphebpkiueiumzw.supabase.co/functions/v1/gift-list?t=';
 const TOKEN_SHAPE = /^[0-9a-f]{64}$/;
+// The app's 12 drawn avatars (assets/avatars/<key>.png). Only these keys are ever put in a path.
+const AVATAR_KEYS = new Set(['meeple', 'die', 'card', 'hourglass', 'pawn', 'hex', 'rulebook', 'target', 'knight', 'shield', 'castle', 'crown']);
 const AFFILIATE_LABEL = 'Affiliate link: GameSquire may earn a commission if you buy.';
 
 const esc = (s) =>
@@ -109,6 +111,7 @@ header{background:var(--hdr);border-bottom:1px solid var(--hdr-border);padding:1
 main{padding:32px 0 48px}
 .who{display:flex;align-items:center;gap:14px;margin-bottom:6px}
 .avatar{flex:none;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--gold)}
+.avatar-img{flex:none;width:52px;height:52px;border-radius:50%;object-fit:cover;background:var(--surface);border:1px solid var(--border)}
 h1{font-family:'Domine',serif;font-weight:700;font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.2;margin:0;letter-spacing:-.01em;overflow-wrap:anywhere}
 .count{color:var(--ink3);font-size:.9rem;margin:0 0 20px}
 .list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
@@ -239,6 +242,12 @@ export async function onRequestGet({ request, params }) {
   const color = /^#[0-9a-fA-F]{6}$/.test(String(data.avatar_color || '')) ? data.avatar_color : null;
   const emoji = data.avatar_emoji ? esc(String(data.avatar_emoji).slice(0, 8)) : '🎲';
 
+  const avatarKey = typeof data.avatar_key === 'string' && AVATAR_KEYS.has(data.avatar_key) ? data.avatar_key : null;
+  // The drawn avatar the app shows; the old emoji disc only when the function does not send a key yet.
+  const avatarHtml = avatarKey
+    ? `<img class="avatar-img" src="/assets/avatars/${avatarKey}.png" width="52" height="52" alt="${esc(name)}’s avatar">`
+    : `<div class="avatar" aria-hidden="true"${color ? ` style="background:${color}"` : ''}>${emoji}</div>`;
+
   const cards = games
     .map((g) => {
       const gname = String(g.name || '').slice(0, 200);
@@ -286,7 +295,7 @@ export async function onRequestGet({ request, params }) {
 
   const count = games.length;
   const countLine = count === 1 ? '1 game' : `${count} games`;
-  const body = `<div class="who"><div class="avatar" aria-hidden="true"${color ? ` style="background:${color}"` : ''}>${emoji}</div><h1>${esc(possessive)} board game wishlist</h1></div>
+  const body = `<div class="who">${avatarHtml}<h1>${esc(possessive)} board game wishlist</h1></div>
 <p class="count">${count > 0 ? esc(countLine) : ''}</p>
 ${count > 0 ? `<ul class="list">${cards}</ul>` : `<p class="empty">Nothing on this wishlist right now. Check back later.</p>`}
 ${disclosure}
