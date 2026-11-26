@@ -9,7 +9,8 @@
 //
 // Privacy rules kept here: the page is never cached and never indexed; Referrer-Policy no-referrer, so the shop never
 // sees the token in a Referer; the standard PostHog snippet is NOT loaded (it would record the page URL, which holds
-// the token), and the click counter sends a count-only event with no URL and no person. Pages _headers do not apply
+// the token), and the click counter posts the tap (with the link's own token, to our own gift-list function, never
+// to PostHog); the function looks up the owner and sends the event as the owner. The page never learns the owner. Pages _headers do not apply
 // to Functions responses, so this file sets every header itself (CSP included, with BoardGameGeek's image host).
 //
 // A stopped, unknown or malformed link all look the same: "This gift list is no longer shared".
@@ -34,7 +35,7 @@ function securityHeaders() {
     'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
     'Permissions-Policy': 'geolocation=(), camera=(), microphone=(), payment=()',
     'Content-Security-Policy':
-      "default-src 'self'; img-src 'self' data: https://cf.geekdo-images.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src https://e.gamesquire.app; form-action 'none'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'",
+      "default-src 'self'; img-src 'self' data: https://cf.geekdo-images.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src https://e.gamesquire.app https://kmuvpaphebpkiueiumzw.supabase.co; form-action 'none'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'",
   };
 }
 

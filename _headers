@@ -16,7 +16,7 @@
 # CSP (BoardGameGeek pictures, no PostHog script) and no-referrer replace the site-wide ones. Verified on a preview.
 /gift/*
   ! Content-Security-Policy
-  Content-Security-Policy: default-src 'self'; img-src 'self' data: https://cf.geekdo-images.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src https://e.gamesquire.app; form-action 'none'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https://cf.geekdo-images.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src https://e.gamesquire.app https://kmuvpaphebpkiueiumzw.supabase.co; form-action 'none'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
   ! Referrer-Policy
   Referrer-Policy: no-referrer
   X-Robots-Tag: noindex, nofollow, noarchive
