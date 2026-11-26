@@ -7,7 +7,9 @@
 - Track the board games you own and want, with a free shelf, wishlist and play log
 - See what friends own and what you can both play, with collection matching
 - Share one shelf with up to 5 people in a household
+- Log every play with scores and players; wins, head-to-head records and play history are counted for you
 - Import your BoardGameGeek collection, wishlist, ratings and plays, and export to CSV any time
+- Bring your plays in from a BG Stats backup
 - Ask the Herald, the rules assistant, questions about a game's rulebook
 - Learn to play guides for popular games
 
