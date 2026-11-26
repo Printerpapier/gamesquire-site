@@ -1,0 +1,31 @@
+# GameSquire
+
+> GameSquire is a board game collection tracker and play log with a friends layer. It helps a group answer "what should we play tonight?" by filtering your shelf, a friend's shelf or your household's shared shelf by mood and occasion. Free to use with no ads. An optional paid Knight subscription adds more of the extras.
+
+## What it does
+
+- Track the board games you own and want, with a free shelf, wishlist and play log
+- See what friends own and what you can both play, with collection matching
+- Share one shelf with up to 5 people in a household
+- Import your BoardGameGeek collection, wishlist, ratings and plays, and export to CSV any time
+- Ask the Herald, the rules assistant, questions about a game's rulebook
+- Learn to play guides for popular games
+
+## Who it is for
+
+Board game players who want to pick a game quickly with the people around them, track what they own and have played, and see their friends' shelves.
+
+## Platforms
+
+iPhone, iPad, Android and the web, all with one account. Free to download.
+
+## Links
+
+- App Store: https://apps.apple.com/app/id6804383196
+- Google Play: https://play.google.com/store/apps/details?id=com.squirebuilds.tabletracker
+- Web app: https://my.gamesquire.app
+- Website: https://gamesquire.app
+- Guides: https://gamesquire.app/guides
+- Release log: https://gamesquire.app/releases
+- Privacy policy: https://gamesquire.app/privacy
+- Publisher: Squire Builds, https://squirebuilds.com
