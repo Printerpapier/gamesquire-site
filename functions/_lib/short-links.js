@@ -27,10 +27,11 @@ const SOURCES = {
   discord: ['discord', 'social'],
   club: ['club', 'social'],
   tally: ['tally', 'share'],
+  alternativeto: ['alternativeto', 'directory'],
 };
 
 // Sources whose campaign is not "marketing" (a Year's Tally card people share themselves, not a post of ours).
-const CAMPAIGNS = { tally: 'year_tally' };
+const CAMPAIGNS = { tally: 'year_tally', alternativeto: 'listing' };
 
 /** Sources that also have a /more link (the landing page itself, tagged). Not bgg, discord or club: those never had one. */
 export const MORE_SOURCES = ['reddit', 'bluesky', 'x', 'instagram', 'tiktok', 'hello'];
